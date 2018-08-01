@@ -112,7 +112,6 @@ INDEX VERSION 1.127+C:\Users\internousdev\Desktop\workspace\workspace-kimura\tes
 2885906700.index
 44205206.index
 542784031.index
-1364281132.index
 270511069.index
 3176409671.index
 3396323106.index
