@@ -81,7 +81,7 @@
 							<span>値段</span>
 						</td>
 						<td>
-							<s:property value="session.buyItem_price"/><span>円</span>
+							<s:property value="session.buyItem_price"/><a> 円</a>
 						</td>
 					</tr>
 					<tr>

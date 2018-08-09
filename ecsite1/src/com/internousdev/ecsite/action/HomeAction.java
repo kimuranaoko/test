@@ -1,10 +1,12 @@
 package com.internousdev.ecsite.action;
 
-import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
+
 import org.apache.struts2.interceptor.SessionAware;
+
 import com.internousdev.ecsite.dao.BuyItemDAO;
 import com.internousdev.ecsite.dto.BuyItemDTO;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class HomeAction extends ActionSupport implements SessionAware{
 
@@ -20,6 +22,11 @@ public class HomeAction extends ActionSupport implements SessionAware{
 			session.put("buyItem_price", buyItemDTO.getItemPrice());
 			result=SUCCESS;
 		}
+
+		if("0".equals(session.get("flg").toString())){
+			result="admin";
+		}
+
 		return result;
 	}
 
