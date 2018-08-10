@@ -24,9 +24,9 @@ public class ItemTableAction extends ActionSupport implements SessionAware{
 		}else if(deleteFlg.equals("1")){
 			delete();
 		}
-
 		String result = SUCCESS;
 		return result;
+
 	}
 
 	public void delete() throws SQLException{

@@ -1,0 +1,41 @@
+package com.internousdev.ecsite.action;
+
+import java.sql.SQLException;
+import java.util.Enumeration;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.ecsite.dao.ItemContentsDAO;
+import com.opensymphony.xwork2.ActionSupport;
+
+
+public class ItemContentsAction extends ActionSupport implements SessionAware{
+
+	public Map<String,Object> session;
+	private ItemContentsDAO itemContentsDAO = new ItemContentsDAO();
+
+	public String execute() throws SQLException{
+
+		session.put("itemName", "あいうえお");
+		itemContentsDAO.getItemContents(session.get("itemName").toString());
+		String result = SUCCESS;
+		return result;
+
+	}
+
+	@Override
+	public void setSession(Map<String,Object> session){
+		this.session = session;
+	}
+
+
+	public ItemContentsDAO getItemContentsDAO() {
+		return itemContentsDAO;
+	}
+
+	public void setItemContentsDAO(ItemContentsDAO itemContentsDAO) {
+		this.itemContentsDAO = itemContentsDAO;
+	}
+
+}

@@ -1,9 +1,0 @@
-package com.internousdev.ecsite.dao;
-
-public class BuyItemDAO {
-
-	public void getBuyItemInfo(){
-
-	}
-
-}

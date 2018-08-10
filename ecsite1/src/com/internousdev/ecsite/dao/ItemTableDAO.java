@@ -14,6 +14,7 @@ public class ItemTableDAO {
 	private DBConnector dbConnector = new DBConnector();
 	private Connection connection = dbConnector.getConnection();
 
+//全件取得
 	public ArrayList<ItemTableDTO> getItemTableInfo() throws SQLException{
 
 		ArrayList<ItemTableDTO> itemTableDTO = new ArrayList<ItemTableDTO>();
@@ -51,6 +52,7 @@ public class ItemTableDAO {
 
 	}
 
+//削除
 	public  int itemDelete() throws SQLException{
 
 		String sql="DELETE FROM item_info_transaction";

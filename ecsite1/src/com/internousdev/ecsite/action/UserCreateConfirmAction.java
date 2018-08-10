@@ -1,9 +1,13 @@
 package com.internousdev.ecsite.action;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.ecsite.dao.UserCreateConfirmDAO;
+import com.internousdev.ecsite.dto.UserCreateConfirmDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserCreateConfirmAction extends ActionSupport implements SessionAware{
@@ -13,17 +17,35 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	private String userName;
 	public Map<String,Object> session;
 	private String errorMassage;
+	private UserCreateConfirmDAO userCreateConfirmDAO = new UserCreateConfirmDAO();
+	private ArrayList<UserCreateConfirmDTO> alreadyUserList = new ArrayList<UserCreateConfirmDTO>();
 
-	public String execute(){
+
+	public String execute() throws SQLException{
 		String result = SUCCESS;
 
 		if(!(loginUserId.equals(""))
 				&& !(loginPassword.equals(""))
 				&& !(userName.equals(""))){
-			session.put("loginUserId", loginUserId);
-			session.put("loginPassword", loginPassword);
-			session.put("userName", userName);
-			session.put("flg", "0");
+
+				alreadyUserList =userCreateConfirmDAO.getUserCreateConfirmDTO(loginUserId);
+
+				for(UserCreateConfirmDTO aa : alreadyUserList){
+					System.out.println(aa.getAlreadyLoginId());
+				}
+
+
+				if(!(alreadyUserList.isEmpty())){
+					setErrorMassage("ログインIDがすでに使用されています。別のIDを登録してください。");
+					result = ERROR;
+
+				}else{
+					session.put("loginUserId", loginUserId);
+					session.put("loginPassword", loginPassword);
+					session.put("userName", userName);
+					session.put("flg", "0");
+				}
+
 		}else{
 			setErrorMassage("未入力の項目があります。");
 			result = ERROR;

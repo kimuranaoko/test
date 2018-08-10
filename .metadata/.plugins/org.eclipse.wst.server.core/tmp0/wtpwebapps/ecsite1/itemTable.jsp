@@ -83,6 +83,7 @@
 						<th>値段</th>
 						<th>在庫数</th>
 						<th>登録日</th>
+						<th>詳細へ</th>
 					</tr>
 					<s:iterator value="itemList">
 						<tr>
@@ -90,10 +91,15 @@
 							<td><s:property value="itemPrice"/><span>円</span></td>
 							<td><s:property value="itemStock"/><span>個</span></td>
 							<td><s:property value="insert_date"/></td>
+							<td>
+								<s:form action="ItemContentsAction">
+									<s:submit value="詳細" />
+								</s:form>
+							</td>
 						</tr>
 					</s:iterator>
 				</table>
-				<s:form action="ItemTableAction">
+				<s:form action="">
 					<input type="hidden" name="deleteFlg" value="1">
 					<s:submit value="削除" method="delete"/>
 				</s:form>
