@@ -19,7 +19,7 @@ public class ItemTableDAO {
 
 		ArrayList<ItemTableDTO> itemTableDTO = new ArrayList<ItemTableDTO>();
 
-		String sql="SELECT item_name,item_price,item_stock,insert_date "
+		String sql="SELECT id,item_name,item_price,item_stock,insert_date "
 				+ "FROM item_info_transaction  ORDER BY item_name ";
 
 		try{
@@ -28,6 +28,7 @@ public class ItemTableDAO {
 
 			while(resultSet.next()){
 				ItemTableDTO dto = new ItemTableDTO();
+				dto.setItemId(resultSet.getString("id"));
 				dto.setItemName(resultSet.getString("item_name"));
 				dto.setItemPrice(resultSet.getString("item_price"));
 				dto.setItemStock(resultSet.getString("item_stock"));

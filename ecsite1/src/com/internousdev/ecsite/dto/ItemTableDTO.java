@@ -2,10 +2,19 @@ package com.internousdev.ecsite.dto;
 
 public class ItemTableDTO {
 
+	public String itemId;
 	public String itemName;
 	public String itemPrice;
 	public String itemStock;
 	public String insert_date;
+
+	public String getItemId(){
+		return itemId;
+	}
+
+	public void setItemId(String itemId){
+		this.itemId = itemId;
+	}
 
 	public String getItemName(){
 		return itemName;

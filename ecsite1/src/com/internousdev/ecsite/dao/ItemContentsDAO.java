@@ -20,7 +20,7 @@ public class ItemContentsDAO {
 	public  ItemContentsDTO getItemContents(String item_name) throws SQLException{
 		ItemContentsDTO dto = new ItemContentsDTO();
 		System.out.println("2");
-		String sql="SELECT item_name,item_price,item_stock,insert_date FROM item_info_transaction WHERE item_name = ? ORDER BY item_name ";
+		String sql="SELECT id,item_name,item_price,item_stock,insert_date FROM item_info_transaction WHERE item_name = ? ORDER BY item_name ";
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -29,12 +29,14 @@ public class ItemContentsDAO {
 
 
 			if(resultSet.next()){
+				dto.setItemId(resultSet.getString("id"));
 				dto.setItemName(resultSet.getString("item_name"));
 				dto.setItemPrice(resultSet.getString("item_price"));
 				dto.setItemStock(resultSet.getString("item_stock"));
 				dto.setInsert_date(resultSet.getString("insert_date"));
 			}
 
+			System.out.println("IDですよ"+dto.getItemId());
 			System.out.println(dto.getItemName());
 			System.out.println(dto.getItemPrice());
 			System.out.println(dto.getItemStock());

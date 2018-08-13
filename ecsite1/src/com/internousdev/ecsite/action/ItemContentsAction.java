@@ -22,10 +22,12 @@ public class ItemContentsAction extends ActionSupport implements SessionAware{
 		System.out.println("1");
 		ItemContentsDTO dto = itemContentsDAO.getItemContents(itemName);
 
+		session.put("AItemId",dto.getItemId());
 		session.put("AItemName",dto.getItemName());
 		session.put("AItemPrice", dto.getItemPrice());
 		session.put("AItemStock", dto.getItemStock());
 		session.put("Ainsert_date",dto.getInsert_date());
+
 
 		System.out.println(session.get("AItemName"));
 
