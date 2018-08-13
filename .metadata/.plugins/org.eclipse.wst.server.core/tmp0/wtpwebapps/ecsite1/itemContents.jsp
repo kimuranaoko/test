@@ -71,8 +71,8 @@
 		<div id="top">
 			<p>ItemContents</p>
 		</div>
-		<div>
-			<h3>★商品詳細★</h3>
+			<s:if test="message ==null">
+				<h3>★商品詳細★</h3>
 				<table>
 					<tr id="box">
 						<td>
@@ -81,6 +81,7 @@
 						<td>
 							<s:property value="session.AItemId" escape="false"/>
 						</td>
+					</tr>
 					<tr id="box">
 						<td>
 							<label>商品名：</label>
@@ -113,9 +114,16 @@
 							<s:property value="session.Ainsert_date" escape="false"/>
 						</td>
 					</tr>
+				</table>
 
-			</table>
-		</div>
+				<a href='<s:url action="ItemContentsAction">
+					<s:param name = "deleteFlg" value="1"/>
+								</s:url>'>削除</a><br>
+
+			</s:if>
+			<s:if test="message !=null">
+					<h3><s:property value="message"/></h3>
+			</s:if>
 		<div>
 			<p>前画面に戻る場合は<a href='<s:url action="ItemTableAction"/>'>こちら</a></p>
 		</div>

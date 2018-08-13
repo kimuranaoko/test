@@ -17,14 +17,14 @@ public class ItemContentsDAO {
 
 
 //	詳細
-	public  ItemContentsDTO getItemContents(String item_name) throws SQLException{
+	public  ItemContentsDTO getItemContents(String itemId) throws SQLException{
 		ItemContentsDTO dto = new ItemContentsDTO();
-		System.out.println("2");
-		String sql="SELECT id,item_name,item_price,item_stock,insert_date FROM item_info_transaction WHERE item_name = ? ORDER BY item_name ";
+		String sql="SELECT id,item_name,item_price,item_stock,insert_date FROM item_info_transaction WHERE id = ? ORDER BY item_name ";
 
 		try{
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, item_name);
+			PreparedStatement preparedStatement = null;
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, itemId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 
@@ -36,19 +36,38 @@ public class ItemContentsDAO {
 				dto.setInsert_date(resultSet.getString("insert_date"));
 			}
 
-			System.out.println("IDですよ"+dto.getItemId());
-			System.out.println(dto.getItemName());
-			System.out.println(dto.getItemPrice());
-			System.out.println(dto.getItemStock());
-			System.out.println(dto.getInsert_date());
+			System.out.println("ID:"+dto.getItemId());
+			System.out.println("Name:"+dto.getItemName());
+			System.out.println("Price:"+dto.getItemPrice());
+			System.out.println("Stock:"+dto.getItemStock());
+			System.out.println("date:"+dto.getInsert_date());
 
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			connection.close();
 		}
-		System.out.println("3");
 		return dto;
 
 	}
+
+	//削除
+		public  int itemDelete(String itemId) throws SQLException{
+
+			String sql="DELETE FROM item_info_transaction WHERE id=?";
+
+			PreparedStatement preparedStatement = null;
+
+			int result = 0;
+
+			try{
+				preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setString(1, itemId);
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				connection.close();
+			}
+			return result;
+		}
 }

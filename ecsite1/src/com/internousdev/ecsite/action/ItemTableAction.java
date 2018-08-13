@@ -36,8 +36,10 @@ public class ItemTableAction extends ActionSupport implements SessionAware{
 		if(res>0){
 			itemList=null;
 			setMessage("商品を正しく削除しました。");
+
 		}else if(res==0){
 			setMessage("商品情報の削除に失敗しました。");
+
 		}
 	}
 

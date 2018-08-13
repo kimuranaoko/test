@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -10,9 +9,6 @@
 	<meta http-equiv="imagetoolbar" content="no"/>
 	<meta name="description" content=""/>
 	<meta name="keywords" content=""/>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 	<title>ItemTable画面</title>
 
 	<style type="text/css">
@@ -63,6 +59,14 @@
 		}
 
 	</style>
+
+	<script type="text/javascript">
+		function submitAction(url){
+			$('form').attr('action',url);
+			$('form').submit();
+		}
+	</script>
+
 </head>
 <body>
 	<div id="header">
@@ -90,45 +94,24 @@
 					</tr>
 					<s:iterator value="itemList">
 						<tr>
-							<td id="Input"><s:property value="itemId"/></td>
+							<td><s:property value="itemId"/></td>
 							<td><s:property value="itemName"/></td>
 							<td><s:property value="itemPrice"/><span>円</span></td>
 							<td><s:property value="itemStock"/><span>個</span></td>
 							<td><s:property value="insert_date"/></td>
 							<td>
-<%-- 								<s:form action="ItemContentsAction"> --%>
-<%-- 									<s:submit value="詳細" /> --%>
-<%-- 								</s:form> --%>
-									<input type="button" id="c" value="詳細">
+
+<!-- 								<input type="button" value="詳細" onclick="submitAction('ItemContentsAction')"/> -->
+<%-- 								<s:param name = "itemId" value="%{itemId}"/> --%>
+<%-- 																<s:submit></s:submit> --%>
+								<a href='<s:url action="ItemContentsAction">
+								<s:param name = "itemId" value="%{itemId}"/>
+								</s:url>'>詳細</a><br>
+
 							</td>
 						</tr>
 					</s:iterator>
-
 				</table>
-
-		            <td><input type="text" id="value" value="" /> </td>
-
-
-				<script>
-				jQuery(function() {
-					$("[id=c]").click(function(){
-					    var index = $("[id=c]").index(this);
-					    var value = $("[id=Input]").val();
-					    $("#value").val(value);
-
-					});
-
-				});
-				</script>
-
-
-
-
-
-
-
-
-
 				<s:form action="">
 					<input type="hidden" name="deleteFlg" value="1">
 					<s:submit value="削除" method="delete"/>

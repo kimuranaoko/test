@@ -12,15 +12,20 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ItemContentsAction extends ActionSupport implements SessionAware{
 
-	public Map<String,Object> session;
+	private Map<String,Object> session;
 	private ItemContentsDAO itemContentsDAO = new ItemContentsDAO();
+	private String itemId;
+	private String deleteFlg;
+	private String message;
+
 
 
 	public String execute() throws SQLException{
 
-		String itemName = "あいうえお";
-		System.out.println("1");
-		ItemContentsDTO dto = itemContentsDAO.getItemContents(itemName);
+		System.out.println(deleteFlg);
+		if(deleteFlg == null){
+
+		ItemContentsDTO dto = itemContentsDAO.getItemContents(itemId);
 
 		session.put("AItemId",dto.getItemId());
 		session.put("AItemName",dto.getItemName());
@@ -28,15 +33,49 @@ public class ItemContentsAction extends ActionSupport implements SessionAware{
 		session.put("AItemStock", dto.getItemStock());
 		session.put("Ainsert_date",dto.getInsert_date());
 
+		}else if(deleteFlg.equals("1")){
+			delete();
+		}
 
-		System.out.println(session.get("AItemName"));
-
-		System.out.println("4");
 
 		String result = SUCCESS;
 		return result;
 
 
+	}
+
+	public void delete() throws SQLException{
+
+		int res = itemContentsDAO.itemDelete(itemId);
+
+		if(res>0){
+			setMessage("商品情報を正しく削除しました。");
+
+		}else if(res == 0){
+			setMessage("商品情報の削除に失敗しました。");
+		}
+
+
+	}
+
+	public String getMessage(){
+		return this.message;
+	}
+
+	public void setMessage(String message){
+		this.message = message;
+	}
+
+	public String getItemId(){
+		return itemId;
+	}
+
+	public void setItemId(String itemId){
+		this.itemId = itemId;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
 
 	@Override
