@@ -83,6 +83,8 @@
 						<th>パスワード</th>
 						<th>ユーザー名</th>
 						<th>登録日</th>
+						<th>更新日</th>
+						<th>詳細へ</th>
 
 					</tr>
 					<s:iterator value="userList">
@@ -91,6 +93,13 @@
 							<td><s:property value="loginPass"/></td>
 							<td><s:property value="userName"/></td>
 							<td><s:property value="insert_date"/></td>
+							<td><s:property value="update_date"/></td>
+
+							<td>
+							<a href='<s:url action="userContentsAction">
+								<s:param name = "Id" value="%{id}"/>
+								</s:url>'>詳細</a>
+							</td>
 						</tr>
 					</s:iterator>
 				</table>

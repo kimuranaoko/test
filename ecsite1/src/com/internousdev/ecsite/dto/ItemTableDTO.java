@@ -7,6 +7,7 @@ public class ItemTableDTO {
 	public String itemPrice;
 	public String itemStock;
 	public String insert_date;
+	public String update_date;
 
 	public String getItemId(){
 		return itemId;
@@ -46,6 +47,14 @@ public class ItemTableDTO {
 
 	public void setInsert_date(String insert_date){
 		this.insert_date = insert_date;
+	}
+
+	public String getUpdate_date(){
+		return update_date;
+	}
+
+	public void setUpdate_date(String update_date){
+		this.update_date = update_date;
 	}
 
 }

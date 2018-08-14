@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -90,6 +91,7 @@
 						<th>値段</th>
 						<th>在庫数</th>
 						<th>登録日</th>
+						<th>更新日</th>
 						<th>詳細へ</th>
 					</tr>
 					<s:iterator value="itemList">
@@ -99,6 +101,7 @@
 							<td><s:property value="itemPrice"/><span>円</span></td>
 							<td><s:property value="itemStock"/><span>個</span></td>
 							<td><s:property value="insert_date"/></td>
+							<td><s:property value="update_date"/></td>
 							<td>
 
 <!-- 								<input type="button" value="詳細" onclick="submitAction('ItemContentsAction')"/> -->

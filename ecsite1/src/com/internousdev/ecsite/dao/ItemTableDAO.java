@@ -19,8 +19,8 @@ public class ItemTableDAO {
 
 		ArrayList<ItemTableDTO> itemTableDTO = new ArrayList<ItemTableDTO>();
 
-		String sql="SELECT id,item_name,item_price,item_stock,insert_date "
-				+ "FROM item_info_transaction  ORDER BY item_name ";
+		String sql="SELECT id,item_name,item_price,item_stock,insert_date,update_date "
+				+ "FROM item_info_transaction  ORDER BY id ";
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -33,15 +33,21 @@ public class ItemTableDAO {
 				dto.setItemPrice(resultSet.getString("item_price"));
 				dto.setItemStock(resultSet.getString("item_stock"));
 				dto.setInsert_date(resultSet.getString("insert_date"));
+
+				if(null == resultSet.getString("update_date")){
+					dto.setUpdate_date("---");
+				}else{
+				dto.setUpdate_date(resultSet.getString("update_date"));
+				}
 				itemTableDTO.add(dto);
 			}
 
-		for (ItemTableDTO dto : itemTableDTO) {
-			System.out.println("名前："+dto.getItemName());
-			System.out.println("値段:"+dto.getItemPrice());
-			System.out.println("在庫:"+dto.getItemStock());
-			System.out.println("登録日:"+dto.getInsert_date());
-		}
+//		for (ItemTableDTO dto : itemTableDTO) {
+//			System.out.println("名前："+dto.getItemName());
+//			System.out.println("値段:"+dto.getItemPrice());
+//			System.out.println("在庫:"+dto.getItemStock());
+//			System.out.println("登録日:"+dto.getInsert_date());
+//		}
 
 		}catch(Exception e){
 			e.printStackTrace();

@@ -10,7 +10,6 @@
 	<meta http-equiv="imagetoolbar" content="no"/>
 	<meta name="description" content=""/>
 	<meta name="keywords" content=""/>
-
 	<title>ItemContents画面</title>
 
 	<style type="text/css">
@@ -71,7 +70,48 @@
 		<div id="top">
 			<p>ItemContents</p>
 		</div>
-			<s:if test="message ==null">
+<!-- flg2ならボックス出現 -->
+			<s:if test="flg==2">
+				<table>
+					<s:form action="ItemContentsAction">
+					<input type="hidden" name="flg" value="3">
+						<tr>
+							<td>
+								<label>商品名：</label>
+							</td>
+							<td>
+								<input type="text" name="itemName" value=""/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>金額：</label>
+							</td>
+							<td>
+								<input type="text" name="itemPrice" value=""/><a>　円</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>在庫数：</label>
+							</td>
+							<td>
+								<select name="itemStock">
+									<option value="100" selected="selected">100</option>
+									<option value="200">200</option>
+									<option value="300">300</option>
+									<option value="400">400</option>
+									<option value="500">500</option>
+								</select>
+							</td>
+						</tr>
+						<s:submit value="登録"/>
+					</s:form>
+				</table>
+
+			</s:if>
+
+			<s:elseif test="message ==null && editMessage == null">
 				<h3>★商品詳細★</h3>
 				<table>
 					<tr id="box">
@@ -114,16 +154,40 @@
 							<s:property value="session.Ainsert_date" escape="false"/>
 						</td>
 					</tr>
+					<tr id="box">
+						<td>
+							<label>更新日：</label>
+						</td>
+						<td>
+							<s:property value="session.Aupdate_date" escape="false"/>
+						</td>
+					</tr>
 				</table>
 
-				<a href='<s:url action="ItemContentsAction">
-					<s:param name = "deleteFlg" value="1"/>
-								</s:url>'>削除</a><br>
+				<s:form action="">
+					<input type="hidden" name="Flg" value="2">
+					<s:submit value="編集" method="edit1"/>
+				</s:form>
 
+				<s:form action="">
+					<input type="hidden" name="Flg" value="1">
+					<s:submit value="削除" method="delete"/>
+				</s:form>
+
+
+
+
+			</s:elseif>
+
+
+			<s:if test="editMessage !=null">
+					<h3><s:property value="editMessage"/></h3>
 			</s:if>
+
 			<s:if test="message !=null">
 					<h3><s:property value="message"/></h3>
 			</s:if>
+
 		<div>
 			<p>前画面に戻る場合は<a href='<s:url action="ItemTableAction"/>'>こちら</a></p>
 		</div>
