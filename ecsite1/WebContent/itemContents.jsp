@@ -105,7 +105,7 @@
 								</select>
 							</td>
 						</tr>
-						<s:submit value="登録"/>
+						<s:submit value="更新"/>
 					</s:form>
 				</table>
 

@@ -18,7 +18,7 @@ public class UserTableDAO {
 
 		ArrayList<UserTableDTO> userTableDTO = new ArrayList<UserTableDTO>();
 
-		String sql="SELECT login_id,login_pass,user_name,insert_date "
+		String sql="SELECT id,login_id,login_pass,user_name,insert_date,update_date "
 				+ "FROM login_user_transaction  ORDER BY user_name ";
 
 		try{
@@ -28,20 +28,27 @@ public class UserTableDAO {
 			while(resultSet.next()){
 
 				UserTableDTO dto = new UserTableDTO();
+				dto.setId(resultSet.getInt("id"));
 				dto.setLoginId(resultSet.getString("login_id"));
 				dto.setLoginPass(resultSet.getString("login_pass"));
 				dto.setUserName(resultSet.getString("user_name"));
 				dto.setInsert_date(resultSet.getString("insert_date"));
+
+				if(null ==resultSet.getString("update_date")){
+					dto.setUpdate_date("---");
+				}else{
+					dto.setUpdate_date(resultSet.getString("update_date"));
+				}
 				userTableDTO.add(dto);
 			}
 
 
-		for (UserTableDTO dto : userTableDTO) {
-			System.out.println("ID："+dto.getLoginId());
-			System.out.println("PASS:"+dto.getLoginPass());
-			System.out.println("NAME:"+dto.getUserName());
-			System.out.println("DATE"+dto.getInsert_date());
-		}
+//		for (UserTableDTO dto : userTableDTO) {
+//			System.out.println("ID："+dto.getLoginId());
+//			System.out.println("PASS:"+dto.getLoginPass());
+//			System.out.println("NAME:"+dto.getUserName());
+//			System.out.println("DATE"+dto.getInsert_date());
+//		}
 
 		}catch(Exception e){
 			e.printStackTrace();

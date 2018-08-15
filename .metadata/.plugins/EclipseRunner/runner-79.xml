@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<runner version="1.0.0">
+<category name="カテゴリーなし">
+<launchConfiguration bookmark="false" name="BookMaker"/>
+<launchConfiguration bookmark="false" name="Capsule"/>
+<launchConfiguration bookmark="false" name="CheckLoadJDBC"/>
+<launchConfiguration bookmark="false" name="DocsConnectionPropsHelper"/>
+<launchConfiguration bookmark="false" name="Main"/>
+<launchConfiguration bookmark="false" name="Test"/>
+<launchConfiguration bookmark="false" name="ecsite1"/>
+<launchConfiguration bookmark="false" name="ローカル・ホスト の Tomcat8 (Java8)"/>
+</category>
+</runner>

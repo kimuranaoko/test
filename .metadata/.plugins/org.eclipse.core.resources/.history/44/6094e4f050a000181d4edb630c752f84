@@ -1,0 +1,7 @@
+package kadai;
+
+public class Item {
+
+	public void use(){}
+
+}

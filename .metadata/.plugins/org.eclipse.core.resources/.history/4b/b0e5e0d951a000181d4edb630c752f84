@@ -1,0 +1,5 @@
+package kadai;
+
+public class Tea extends Item{
+
+}

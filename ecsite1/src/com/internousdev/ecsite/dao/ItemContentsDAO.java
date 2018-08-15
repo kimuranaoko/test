@@ -92,11 +92,12 @@ public class ItemContentsDAO {
 				preparedStatement.setString(5, itemId);
 
 				i=preparedStatement.executeUpdate();
-				if(i>0){
-					System.out.println(i+"件更新されました");
-				}else{
-					System.out.println("該当するデータはありませんでした");
-				}
+
+//				if(i>0){
+//					System.out.println(i+"件更新されました");
+//				}else{
+//					System.out.println("該当するデータはありませんでした");
+//				}
 
 			}catch(Exception e){
 				e.printStackTrace();

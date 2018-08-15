@@ -21,9 +21,15 @@ public class ItemTableAction extends ActionSupport implements SessionAware{
 	public String execute() throws SQLException{
 		if(deleteFlg == null){
 			itemList = itemTableDAO.getItemTableInfo();
+
+			if(itemList.isEmpty()){
+				setMessage("商品情報がありません。先に登録してください。");
+			}
 		}else if(deleteFlg.equals("1")){
 			delete();
 		}
+
+
 		String result = SUCCESS;
 		return result;
 

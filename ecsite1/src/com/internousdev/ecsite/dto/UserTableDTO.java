@@ -2,11 +2,20 @@ package com.internousdev.ecsite.dto;
 
 public class UserTableDTO {
 
+	public int id;
 	public String loginId;
 	public String loginPass;
 	public String userName;
 	public String insert_date;
+	public String update_date;
 
+	public int getId(){
+		return id;
+	}
+
+	public void setId(int id){
+		this.id = id;
+	}
 
 	public String getLoginId(){
 		return loginId;
@@ -38,6 +47,14 @@ public class UserTableDTO {
 
 	public void setInsert_date(String insert_date){
 		this.insert_date = insert_date;
+	}
+
+	public String getUpdate_date(){
+		return update_date;
+	}
+
+	public void setUpdate_date(String update_date){
+		this.update_date = update_date;
 	}
 
 
