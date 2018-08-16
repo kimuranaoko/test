@@ -16,7 +16,6 @@ public class VendingMachine {
 			System.out.println(i+"の商品が選択されました。");
 			String n =drinks.get(i).getName();
 			System.out.println(n+"を購入します。");
-			drinks.get(i).setStock(drinks.get(i).getStock()-1);
 		}
 	}
 }
