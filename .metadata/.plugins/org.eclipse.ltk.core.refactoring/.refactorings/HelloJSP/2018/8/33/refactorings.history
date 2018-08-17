@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 5 elements from プロジェクト &apos;HelloJSP&apos;&#x0D;&#x0A;- 元のプロジェクト: &apos;HelloJSP&apos;&#x0D;&#x0A;- オリジナル要素:&#x0D;&#x0A;     HelloServlet.java&#x0D;&#x0A;     InquiryServlet.java&#x0D;&#x0A;     MySQLServlet.java&#x0D;&#x0A;     TestServlet.java&#x0D;&#x0A;     WelcomeServlet.java" description="要素の削除" element1="/src&lt;{HelloServlet.java" element2="/src&lt;{InquiryServlet.java" element3="/src&lt;{MySQLServlet.java" element4="/src&lt;{TestServlet.java" element5="/src&lt;{WelcomeServlet.java" elements="5" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1534473007647" subPackages="false" version="1.0"/>
+</session>

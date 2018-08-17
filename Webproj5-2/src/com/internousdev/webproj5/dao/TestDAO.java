@@ -19,7 +19,7 @@ public class TestDAO {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql="insert into users(user_name,password) values(?,?)";
+		String sql = "insert into users(user_name,password) values(?,?)";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, username);
@@ -32,21 +32,20 @@ public class TestDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-
 		try{
 			con.close();
-		}catch(Exception e){
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		return ret;
 	}
 
 	public List<LoginDTO> select(String username,String password){
+
 		DBConnector db=new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql="select * from users where user_name=? and password=?";
-
+		String sql = "select * from users where user_name=? and password=?";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, username);
@@ -55,7 +54,7 @@ public class TestDAO {
 
 			while(rs.next()){
 				LoginDTO dto = new LoginDTO();
-				dto.setUsername(rs.getString("username"));
+				dto.setUsername(rs.getString("user_name"));
 				dto.setPassword(rs.getString("password"));
 				loginDTOList.add(dto);
 			}

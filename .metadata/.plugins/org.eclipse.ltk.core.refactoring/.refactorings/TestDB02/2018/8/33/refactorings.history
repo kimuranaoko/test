@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move source folder &apos;src&apos; to &apos;TestDB02-2&apos;&#x0D;&#x0A;- 元のプロジェクト: &apos;TestDB02&apos;&#x0D;&#x0A;- 宛先要素: &apos;TestDB02-2&apos;&#x0D;&#x0A;- オリジナル要素: &apos;TestDB02/src&apos;&#x0D;&#x0A;- リファクタリングされた要素の参照を更新" description="ソース・フォルダーを移動" destination="=TestDB02-2" element1="/src" flags="6" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveRoots" roots="1" stamp="1534469210235" version="1.0"/>
+</session>

@@ -1,8 +1,0 @@
-
-public class Test {
-
-	public static void main(Sting[] aras){
-		TestUserDAO dao = new TestUserDAO();
-		dao.select("taro", "123");
-	}
-}

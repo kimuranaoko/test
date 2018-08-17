@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="ソース・フォルダー &apos;src&apos; を &apos;HelloJSP&apos; にコピー&#x0D;&#x0A;- 元のプロジェクト: &apos;HelloServlet&apos;&#x0D;&#x0A;- 宛先要素: &apos;HelloJSP&apos;&#x0D;&#x0A;- オリジナル要素: &apos;HelloServlet/src&apos;" description="ソース・フォルダーをコピー" destination="=HelloJSP" element1="/src" flags="6" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyRoots" roots="1" stamp="1534472849710" version="1.0"/>
+</session>
