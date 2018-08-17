@@ -71,10 +71,31 @@ public class UserContentsAction extends ActionSupport implements SessionAware{
 
 	public void edit2() throws SQLException{
 
+		String idMessage="ログインIDを更新しました　";
+		String passMessage="ログインパスワードを更新しました　";
+		String userMessage="ユーザーIDを更新しました　";
+
+
+		if(loginId.equals("")){
+			this.loginId = session.get("loginId").toString();
+			idMessage = "ログインIDは変更ありません　";
+		}
+
+		if(loginPass.equals("")){
+			this.loginPass = session.get("loginPass").toString();
+			passMessage = "ログインパスワードは変更ありません　";
+		}
+
+		if(userName.equals("")){
+			this.userName = session.get("userName").toString();
+			userMessage = "ユーザーIDは変更ありません　";
+		}
+
+
 		int i=userContentsDAO.editUser(Integer.parseInt(session.get("id").toString()), loginId, loginPass, userName);
 
 		if(i>0){
-			setEditMessage("商品情報を正しく更新しました。");
+			setEditMessage(idMessage + passMessage + userMessage);
 
 		}else if(i== 0){
 			setEditMessage("商品情報の更新に失敗しました。");

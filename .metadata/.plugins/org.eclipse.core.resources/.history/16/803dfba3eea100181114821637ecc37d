@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+<!-- 	<link rel="stylesheet" href="./css/style.css"> -->
+	<title>ヘッダー</title>
+	<script>
+// 		function goLoginAction(){
+// 			document.getElmentById("form").action="GoLoginAction";
+// 		}
+// 		function MyPageAction(){
+// 			document.getElmentById("form").action="MyPageAction";
+// 		}
+// 		function goCartAction(){
+// 			document.getElmentById("form").action="GoCartAction";
+// 		}
+// 		function goProductListAction(){
+//			document.getElmentById("categoryId").value=1;
+// 			document.getElmentById("form").action="GoProductListAction";
+// 		}
+// 		function goLogoutAction(){
+// 			document.getElmentById("form").action="GoLogoutction";
+// 		}
+// 		function goSearchItemAction(){
+// 			document.getElmentById("form").action="SearchItemAction";
+// 		}
+	</script>
+
+</head>
+<body>
+	<header>
+		<div id="header">
+			<div id="header-title">
+				Sample Web
+			</div>
+			<div id="header-menu">
+			<ul>
+			<s:form id="form" name="form">
+				<s:if test='#session.containsKey("mCategoryDtoList")'>
+				<li><s:select name="categoryId" list="#session.mCategoryDtoList" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId"/></li>
+				</s:if>
+				<li><s:textfield name="keywords" class="txt-keywords" placeholder="検索ワード"/>
+				<li><s:submit value="商品検索" class="submit_btn" onclick="goSearchItemAction();"/></li>
+				<s:if test="#session.logined == 1">
+				<li><s:submit value="ログアウト" class="submit_btn" onclick="goLogoutAction();"/></li>
+				</s:if>
+				<s:else>
+					<li><s:submit value="ログイン" class="submit_btn" onclick="goLoginAction();"/>
+			</s:form>
+			</ul>
+			</div>
+		</div>
+	</header>
+	<body>
+	</body>
+</body>
+</html>

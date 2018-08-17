@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<runner version="1.0.0">
+<category name="カテゴリーなし">
+<launchConfiguration bookmark="false" name="CheckLadJDBC"/>
+<launchConfiguration bookmark="false" name="CheckLoadJDBC"/>
+<launchConfiguration bookmark="false" name="Test"/>
+<launchConfiguration bookmark="false" name="Test (1)"/>
+<launchConfiguration bookmark="false" name="ecsite-2"/>
+</category>
+</runner>
