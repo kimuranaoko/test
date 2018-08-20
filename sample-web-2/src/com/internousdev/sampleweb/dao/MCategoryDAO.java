@@ -28,7 +28,7 @@ public class MCategoryDAO {
 				mCategoryDTO.setCategoryName(resultSet.getString("category_name"));
 				mCategoryDTO.setCategoryDescription(resultSet.getString("category_description"));
 				mCategoryDTO.setInsertDate(resultSet.getDate("insert_date"));
-				mCategoryDTO.setUpdateDate(resultSet.getDate("updata_data"));
+				mCategoryDTO.setUpdateDate(resultSet.getDate("update_date"));
 				mCategoryDtoList.add(mCategoryDTO);
 			}
 			Iterator<MCategoryDTO> iterator = mCategoryDtoList.iterator();

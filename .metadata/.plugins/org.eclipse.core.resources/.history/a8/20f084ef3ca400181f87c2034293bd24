@@ -1,0 +1,16 @@
+package com.internousdev.sampleweb.action;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.sampleweb.dao.CartInfoDAO;
+import com.internousdev.sampleweb.dao.DestinationInfoDAO;
+import com.internousdev.sampleweb.dao.MCategoryDAO;
+import com.internousdev.sampleweb.dao.UserInfoDAO;
+import com.internousdev.sampleweb.dto.DestinationInfoDTO;
+import com.internousdev.sampleweb.dto.MCategoryDTO;
+import com.internousdev.sampleweb.dto.UserInfoDTO;
+import com.internousdev.sampleweb.util.InputChecker;
+import com.opensymphony.xwork2.ActionSupport;
+public class LoginAction {
+
+}
