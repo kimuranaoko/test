@@ -10,24 +10,24 @@
 	<title>ヘッダー</title>
 	<script>
 		function goLoginAction(){
-			document.getElmentById("form").action="GoLoginAction";
+			document.getElementById("form").action="GoLoginAction";
 		}
-// 		function MyPageAction(){
-// 			document.getElmentById("form").action="MyPageAction";
-// 		}
-// 		function goCartAction(){
-// 			document.getElmentById("form").action="GoCartAction";
-// 		}
-// 		function goProductListAction(){
-//			document.getElmentById("categoryId").value=1;
-// 			document.getElmentById("form").action="GoProductListAction";
-// 		}
-// 		function goLogoutAction(){
-// 			document.getElmentById("form").action="GoLogoutction";
-// 		}
-// 		function goSearchItemAction(){
-// 			document.getElmentById("form").action="SearchItemAction";
-// 		}
+		function MyPageAction(){
+			document.getElementById("form").action="MyPageAction";
+		}
+		function goCartAction(){
+			document.getElementById("form").action="CartAction";
+		}
+		function goProductListAction(){
+			document.getElmentById("categoryId").value=1;
+			document.getElementById("form").action="ProductListAction";
+		}
+		function goLogoutAction(){
+			document.getElementById("form").action="LogoutAction";
+		}
+		function goSearchItemAction(){
+			document.getElementById("form").action="SearchItemAction";
+		}
 	</script>
 
 </head>
@@ -43,30 +43,27 @@
 				<s:if test='#session.containsKey("mCategoryDtoList")'>
 				<li><s:select name="categoryId" list="#session.mCategoryDtoList" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId"/></li>
 				</s:if>
-				<li><s:textfield name="keywords" class="txt-keywords" placeholder="検索ワード"/>
+				<li><s:textfield name="keywords" class="txt-keywords" placeholder="検索ワード"/></li>
 
 
 
 
-<%-- 				<li><s:submit value="商品検索" class="submit_btn" onclick="goSearchItemAction();"/></li> --%>
-<%-- 				<s:if test="#session.logined == 1"> --%>
-<%-- 				<li><s:submit value="ログアウト" class="submit_btn" onclick="goLogoutAction();"/></li> --%>
-<%-- 				</s:if> --%>
-<%-- 				<s:else> --%>
+				<li><s:submit value="商品検索" class="submit_btn" onclick="goSearchItemAction();"/></li>
+				<s:if test="#session.logined == 1">
+				<li><s:submit value="ログアウト" class="submit_btn" onclick="goLogoutAction();"/></li>
+				</s:if>
+				<s:else>
 					<li><s:submit value="ログイン" class="submit_btn" onclick="goLoginAction();"/></li>
-<%-- 					<li><s:submit value="商品一覧" class="submit_btn" onclick="goProductListAction();"/></li> --%>
-<%-- 				</s:else> --%>
-<%-- 				<li><s:submit value="カート" class="submit_btn" onclick="goCartAction();"/></li> --%>
-<%-- 				<li><s:submit value="商品一覧" class="submit_btn" onclick="goMyPageAction();"/></li> --%>
-<%-- 				<s:if test="#session.logined==1"> --%>
-<%-- 					<li><s:submit value="マイページ" class="submit_btn" onclick="goMyPageAction();"/></li> --%>
-<%-- 				</s:if> --%>
+				</s:else>
+				<li><s:submit value="カート" class="submit_btn" onclick="goCartAction();"/></li>
+				<li><s:submit value="商品一覧" class="submit_btn" onclick="goProductListAction();"/></li>
+				<s:if test="#session.logined==1">
+					<li><s:submit value="マイページ" class="submit_btn" onclick="goMyPageAction();"/></li>
+				</s:if>
 			</s:form>
 			</ul>
 			</div>
 		</div>
 	</header>
-	<body>
-	</body>
 </body>
 </html>

@@ -26,15 +26,23 @@ public class InputChecker {
 			regularExpression = "[^";
 		}
 		if(!(availableAlphabeticCharacters) || !(availableKanji) || !(availableHiragana) || !(availableHalfWidthDigit) || !(availableHalfWidthSymbols) || !(availableKatakana) || !(availableFullWidthSymbols)){
-			errorExpression ="]^";
+			errorExpression ="[^";
 		}
 
 		if(availableAlphabeticCharacters){
-			regularExpression += "一-龯";
+			regularExpression +="a-zA-Z";
+				characterTypeList.add("半角英字");
+		}else{
+			errorExpression += "a-zA-Z";
+		}
+
+		if(availableKanji){
+			regularExpression +="一-龯";
 			characterTypeList.add("漢字");
 		}else{
 			errorExpression +="一-龯";
 		}
+
 		if(availableHiragana){
 			regularExpression +="ぁ-ん";
 			characterTypeList.add("ひらがな");

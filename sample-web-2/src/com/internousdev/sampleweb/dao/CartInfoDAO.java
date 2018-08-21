@@ -178,7 +178,7 @@ public class CartInfoDAO {
 		DBConnector db = new DBConnector();
 		Connection connection = db.getConnection();
 		int count = 0;
-		String sql = "update_info set user_id =? temp_user_id = null WHERE temp_use_id=?";
+		String sql = "UPDATE cart_info set user_id =?,temp_user_id = null WHERE temp_user_id=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);

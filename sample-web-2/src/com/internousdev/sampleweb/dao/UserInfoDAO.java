@@ -42,7 +42,7 @@ public class UserInfoDAO {
 		return count;
 	}
 
-//	ログイン済か調べる？？
+//	現行のパスワードが正しいか確認
 	public boolean isExistsUserInfo(String loginId,String password){
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -74,7 +74,7 @@ public class UserInfoDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
-		String sql = "SELECT * FROM user_info WHERE user_id=? password=?";
+		String sql = "SELECT * FROM user_info WHERE user_id=? and password=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);
@@ -169,7 +169,7 @@ public class UserInfoDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int result=0;
-		String sql="UPDATE user_info SET logined=1,WHERE user_id=? and password=?";
+		String sql="UPDATE user_info SET logined=1 WHERE user_id=? and password=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);
@@ -186,7 +186,7 @@ public class UserInfoDAO {
 		return result;
 	}
 
-	public int login(String loginId){
+	public int logout(String loginId){
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int result = 0;

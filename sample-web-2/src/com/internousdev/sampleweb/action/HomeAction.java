@@ -16,6 +16,7 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private String categoryId;
 	private Map<String,Object> session;
+	private String keywords;
 
 	public String execute(){
 
@@ -53,6 +54,14 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	}
 	public void setSession(Map<String,Object> session){
 		this.session = session;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 
 
