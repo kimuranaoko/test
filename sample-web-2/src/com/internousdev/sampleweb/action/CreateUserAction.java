@@ -52,6 +52,7 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		session.put("email", email);
 		session.put("loginId", loginId);
 		session.put("password",password);
+
 		result = SUCCESS;
 		return result;
 	}
