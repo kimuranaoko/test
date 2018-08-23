@@ -73,15 +73,7 @@
 							<span>商品名</span>
 						</td>
 						<td>
-							<s:property value="session.buyItem_name"/><br>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span>値段</span>
-						</td>
-						<td>
-							<s:property value="session.buyItem_price"/><a> 円</a>
+							<s:select name="itemName" list="#session.buyItemList" listValue="itemName" listKey="itemName" />
 						</td>
 					</tr>
 					<tr>
@@ -111,6 +103,9 @@
 						<td>
 							<s:submit value="購入"/>
 						</td>
+					</tr>
+					<tr>
+						<s:hidden name="itemPrice" value=""/>
 					</tr>
 				</table>
 			</s:form>

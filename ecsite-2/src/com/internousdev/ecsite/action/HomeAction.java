@@ -1,5 +1,7 @@
 package com.internousdev.ecsite.action;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -12,21 +14,21 @@ public class HomeAction extends ActionSupport implements SessionAware{
 
 	public Map<String,Object> session;
 
-	public String execute(){
+	public String execute() throws SQLException{
 		String result="login";
-
-
-		if(session.containsKey("id")){
+		if(session.containsKey("login_user_id")){
 			BuyItemDAO buyItemDAO = new BuyItemDAO();
-			BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
-			session.put("id", buyItemDTO.getId());
-			session.put("buyItem_name",buyItemDTO.getItemName());
-			session.put("buyItem_price", buyItemDTO.getItemPrice());
-
+			ArrayList<BuyItemDTO> buyItemList = new ArrayList<BuyItemDTO>();
+			buyItemList = buyItemDAO.getBuyItemInfo();
+			session.put("buyItemList", buyItemList);
 			result=SUCCESS;
 
 			if("1".equals(session.get("flg").toString())){
 				result="admin";
+			}
+
+			for(BuyItemDTO a:buyItemList){
+				System.out.println("★"+a.getItemName());
 			}
 
 		}
