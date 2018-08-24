@@ -42,6 +42,7 @@ public class BuyItemDAO {
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
+
 			while(resultSet.next()){
 				BuyItemDTO dto = new BuyItemDTO();
 				dto.setId(resultSet.getInt("id"));
@@ -57,28 +58,28 @@ public class BuyItemDAO {
 		return buyItemDTO;
 	}
 
-	public String getBuyItemInfo(String itemName) throws SQLException{
+	public BuyItemDTO getBuyItemInfo(String itemName) throws SQLException{
 
-		ArrayList<BuyItemDTO> buyItemDTO = new ArrayList<BuyItemDTO>();
-
-		String sql= "SELECT item_price FROM item_info_transaction WHERE item_name=?";
+		String sql= "SELECT id,item_name,item_price FROM item_info_transaction WHERE item_name=?";
 
 		try{
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			PreparedStatement preparedStatement;
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, itemName);
 			ResultSet resultSet = preparedStatement.executeQuery();
+
 			if(resultSet.next()){
-				BuyItemDTO dto = new BuyItemDTO();
-				dto.setId(resultSet.getInt("id"));
-				dto.setItemName(resultSet.getString("item_name"));
-				dto.setItemPrice(resultSet.getString("item_price"));
-				buyItemDTO.add(dto);
+				buyItemDTO.setItemPrice(resultSet.getString("item_price"));
+				buyItemDTO.setItemName(resultSet.getString("item_name"));
+				buyItemDTO.setId(resultSet.getInt("id"));
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			connection.close();
 		}
-		return "aaa";
+
+		return buyItemDTO;
 	}
 
 	public BuyItemDTO getBuyItemDTO(){

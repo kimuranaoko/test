@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.ecsite.dao.BuyItemDAO;
+import com.internousdev.ecsite.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BuyItemAction extends ActionSupport implements SessionAware{
@@ -13,26 +14,18 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	public Map<String,Object> session;
 	private int count;
 	private String pay;
-	private String itemPriceFlg;
 	private String itemName;
 	private BuyItemDAO buyItemDAO = new BuyItemDAO();
 
 
-	public String execute(){
+	public String execute() throws SQLException{
 		String result = SUCCESS;
-
-//		if(itemPriceFlg.equals("1")){
-//			result ="PRICE";
-//		}else{
+		BuyItemDTO dto = buyItemDAO.getBuyItemInfo(itemName);
 			session.put("count",count);
 
-			try {
-				String price=buyItemDAO.getBuyItemInfo(itemName);
-				session.put("buyItem_price",price);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
+			session.put("buyItem_price",dto.getItemPrice());
+			session.put("buyItem_name",dto.getItemName());
+			session.put("id",dto.getId());
 
 			int intCount = Integer.parseInt(session.get("count").toString());
 			int intPrice = Integer.parseInt(session.get("buyItem_price").toString());
@@ -45,17 +38,9 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 				payment="クレジットカード";
 				session.put("pay", payment);
 			}
-//		}
 		return result;
 	}
 
-	public String getItemPriceFlg() {
-		return itemPriceFlg;
-	}
-
-	public void setItemPriceFlg(String itemPriceFlg) {
-		this.itemPriceFlg = itemPriceFlg;
-	}
 
 	public void setCount(int count){
 		this.count = count;

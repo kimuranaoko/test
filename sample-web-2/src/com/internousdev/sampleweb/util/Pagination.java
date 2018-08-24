@@ -29,7 +29,7 @@ public class Pagination {
 		}
 		paginationDTO.setCurrentProductInfoPage(productInfoPages);
 
-		if((paginationDTO).getStartRecordNo() - 1<=0){
+		if((paginationDTO.getStartRecordNo() - 1)<=0){
 			paginationDTO.setPreviousPage(false);
 		}else{
 			paginationDTO.setPreviousPage(true);
@@ -38,6 +38,9 @@ public class Pagination {
 
 		if(paginationDTO.getEndRecordNo() + pageSize > paginationDTO.getTotalRecordSize()){
 			paginationDTO.setNextPage(false);
+		}else{
+			paginationDTO.setNextPage(true);
+			paginationDTO.setNextPageNo(paginationDTO.getCurrentPageNo() + 1);
 		}
 		return paginationDTO;
 	}

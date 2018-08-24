@@ -19,7 +19,7 @@
 			document.getElementById("form").action="CartAction";
 		}
 		function goProductListAction(){
-			document.getElmentById("categoryId").value=1;
+			document.getElementById("categoryId").value=1;
 			document.getElementById("form").action="ProductListAction";
 		}
 		function goLogoutAction(){

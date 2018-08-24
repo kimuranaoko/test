@@ -28,7 +28,9 @@ public class HomeAction extends ActionSupport implements SessionAware{
 			}
 
 			for(BuyItemDTO a:buyItemList){
+				System.out.println("★"+a.getId());
 				System.out.println("★"+a.getItemName());
+				System.out.println("★"+a.getItemPrice());
 			}
 
 		}

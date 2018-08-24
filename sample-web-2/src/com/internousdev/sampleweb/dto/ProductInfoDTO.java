@@ -79,7 +79,7 @@ public class ProductInfoDTO {
 	public void setReleaseDate(Date releaseDate){
 		this.releaseDate = releaseDate;
 	}
-	public String releaseCompany(){
+	public String getReleaseCompany(){
 		return releaseCompany;
 	}
 	public void setReleaseCompany(String releaseCompany){

@@ -28,7 +28,7 @@ public class ProductInfoDAO {
 				productInfoDto.setProductName(resultSet.getString("product_name"));
 				productInfoDto.setProductNameKana(resultSet.getString("product_name_kana"));
 				productInfoDto.setProductDescription(resultSet.getString("product_description"));
-				productInfoDto.setCategoryId(resultSet.getInt("categorty_id"));
+				productInfoDto.setCategoryId(resultSet.getInt("category_id"));
 				productInfoDto.setPrice(resultSet.getInt("price"));
 				productInfoDto.setImageFilePath(resultSet.getString("image_file_path"));
 				productInfoDto.setImageFileName(resultSet.getString("image_file_name"));
@@ -55,7 +55,7 @@ public class ProductInfoDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		ProductInfoDTO productInfoDTO =  new ProductInfoDTO();
-		String sql ="SELECT * FROM product_ingo where product_id=?";
+		String sql ="SELECT * FROM product_info where product_id=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, productId);
@@ -69,7 +69,7 @@ public class ProductInfoDAO {
 				productInfoDTO.setCategoryId(resultSet.getInt("category_id"));
 				productInfoDTO.setPrice(resultSet.getInt("price"));
 				productInfoDTO.setImageFilePath(resultSet.getString("image_file_path"));
-				productInfoDTO.setImageFileName(resultSet.getString("image_file_path"));
+				productInfoDTO.setImageFileName(resultSet.getString("image_file_name"));
 				productInfoDTO.setReleaseDate(resultSet.getDate("release_date"));
 				productInfoDTO.setReleaseCompany(resultSet.getString("release_company"));
 				productInfoDTO.setStatus(resultSet.getInt("status"));
@@ -115,7 +115,7 @@ public class ProductInfoDAO {
 				productInfoDTO.setCategoryId(resultSet.getInt("category_id"));
 				productInfoDTO.setPrice(resultSet.getInt("price"));
 				productInfoDTO.setImageFilePath(resultSet.getString("image_file_path"));
-				productInfoDTO.setImageFileName(resultSet.getString("image_file_path"));
+				productInfoDTO.setImageFileName(resultSet.getString("image_file_name"));
 				productInfoDTO.setReleaseDate(resultSet.getDate("release_date"));
 				productInfoDTO.setReleaseCompany(resultSet.getString("release_company"));
 				productInfoDTO.setStatus(resultSet.getInt("status"));
@@ -162,7 +162,7 @@ public class ProductInfoDAO {
 				productInfoDTO.setCategoryId(resultSet.getInt("category_id"));
 				productInfoDTO.setPrice(resultSet.getInt("price"));
 				productInfoDTO.setImageFilePath(resultSet.getString("image_file_path"));
-				productInfoDTO.setImageFileName(resultSet.getString("image_file_path"));
+				productInfoDTO.setImageFileName(resultSet.getString("image_file_name"));
 				productInfoDTO.setReleaseDate(resultSet.getDate("release_date"));
 				productInfoDTO.setReleaseCompany(resultSet.getString("release_company"));
 				productInfoDTO.setStatus(resultSet.getInt("status"));
@@ -210,7 +210,7 @@ public class ProductInfoDAO {
 				productInfoDTO.setCategoryId(resultSet.getInt("category_id"));
 				productInfoDTO.setPrice(resultSet.getInt("price"));
 				productInfoDTO.setImageFilePath(resultSet.getString("image_file_path"));
-				productInfoDTO.setImageFileName(resultSet.getString("image_file_path"));
+				productInfoDTO.setImageFileName(resultSet.getString("image_file_name"));
 				productInfoDTO.setReleaseDate(resultSet.getDate("release_date"));
 				productInfoDTO.setReleaseCompany(resultSet.getString("release_company"));
 				productInfoDTO.setStatus(resultSet.getInt("status"));

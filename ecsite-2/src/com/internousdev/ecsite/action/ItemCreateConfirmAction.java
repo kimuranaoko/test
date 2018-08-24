@@ -1,10 +1,13 @@
 package com.internousdev.ecsite.action;
 
-
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.ecsite.dao.ItemCreateConfirmDAO;
+import com.internousdev.ecsite.dto.ItemCreateConfirmDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -16,16 +19,27 @@ public class ItemCreateConfirmAction extends ActionSupport implements SessionAwa
 	private String itemStock;
 	public Map<String,Object> session;
 	private String errorMassage;
+	private ItemCreateConfirmDAO itemCreateConfirmDAO = new ItemCreateConfirmDAO();
+	private ArrayList<ItemCreateConfirmDTO> alreadyItemList = new ArrayList<ItemCreateConfirmDTO>();
 
-	public String execute(){
+	public String execute() throws SQLException{
 		String result = SUCCESS;
 
 		if(!(itemName.equals(""))
 				&& !(itemPrice.equals(""))
 				&& !(itemStock.equals(""))){
-			session.put("itemName", itemName);
-			session.put("itemPrice", itemPrice);
-			session.put("itemStock", itemStock);
+
+			alreadyItemList =itemCreateConfirmDAO.geItemCreateConfirmDTO(itemName);
+
+			if(!(alreadyItemList.isEmpty())){
+				setErrorMassage("その商品はすでに登録されています。別の商品を登録してください。");
+				result = ERROR;
+			}else{
+					session.put("itemName", itemName);
+					session.put("itemPrice", itemPrice);
+					session.put("itemStock", itemStock);
+				}
+
 		}else{
 			setErrorMassage("未入力の項目があります。");
 			result = ERROR;

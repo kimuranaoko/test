@@ -73,7 +73,7 @@
 							<span>商品名</span>
 						</td>
 						<td>
-							<s:select name="itemName" list="#session.buyItemList" listValue="itemName" listKey="itemName" />
+							<s:select name="itemName" list="#session.buyItemList" size="5" listValue="itemName" listKey="itemName" />
 						</td>
 					</tr>
 					<tr>
@@ -103,9 +103,6 @@
 						<td>
 							<s:submit value="購入"/>
 						</td>
-					</tr>
-					<tr>
-						<s:hidden name="itemPrice" value=""/>
 					</tr>
 				</table>
 			</s:form>
