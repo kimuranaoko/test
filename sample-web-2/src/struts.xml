@@ -9,6 +9,12 @@
 	<constant name="struts.devMode" value="true"/>
 	<package name="com.internousdev.sampleweb.action" extends="struts-default">
 
+	<action name="AddCartAction" class="com.internousdev.sampleweb.action.AddCartAction" method="execute">
+		<result name="success">cart.jsp</result>
+		<result name="error">home.jsp</result>
+		<result name="input">cart.jsp</result>
+	</action>
+
 	<action name="CartAction" class="com.internousdev.sampleweb.action.CartAction" method="execute">
 		<result name="success">cart.jsp</result>
 		<result name="error">home.jsp</result>
@@ -27,6 +33,11 @@
 	<action name="CreateUserConfirmAction" class="com.internousdev.sampleweb.action.CreateUserConfirmAction" method="execute">
 		<result name="success">createUserConfirm.jsp</result>
 		<result name="error">createUser.jsp</result>
+	</action>
+
+	<action name="DeleteCartAction" class="com.internousdev.sampleweb.action.DeleteCartAction" method="execute">
+		<result name="success">cart.jsp</result>
+		<result name="error">cart.jsp</result>
 	</action>
 
 	<action name="GoLoginAction" class="com.internousdev.sampleweb.action.GoLoginAction" method="execute">
@@ -72,6 +83,11 @@
 	<action name="ResetPasswordConfirmAction" class="com.internousdev.sampleweb.action.ResetPasswordConfirmAction" method="execute">
 		<result name="success">resetPasswordConfirm.jsp</result>
 		<result name="error">resetPassword.jsp</result>
+	</action>
+
+	<action name="SettlementConfirmAction" class="com.internousdev.sampleweb.action.SettlementConfirmAction" method="execute">
+		<result name="success">settlementConfirm.jsp</result>
+		<result name="error">login.jsp</result>
 	</action>
 
 

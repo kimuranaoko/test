@@ -18,29 +18,29 @@ public class CartInfoDAO {
 		List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
 
 		String sql ="select"
-				+ "ci.id as id,"
-				+ "ci.user_id as user_id,"
-				+ "ci.temp_user_id as temp_user_id,"
-				+ "ci.product_id as product_id,"
-				+ "sum(ci.product_count) as product_count,"
-				+ "pi.price as price,"
-				+ "pi.regist_date as regist_date,"
-				+ "pi.update_date as regist_date,"
-				+ "pi.product_name as product_name,"
-				+ "pi.product_name_kana as product_name_kana,"
-				+ "pi.product_description as product_description,"
-				+ "pi.category_id as category_id,"
-				+ "pi.image_file_path as image_file_path,"
-				+ "pi.image_file_name as image_file_name,"
-				+ "pi.release_date as release_date,"
-				+ "pi.release_company as release_company,"
-				+ "pi.status as status,"
-				+ "(sum(ci.product_count)*price) as subtotal,"
-				+ "FROM cart_info as ci,"
-				+ "LEFT JOIN product_info as pi,"
-				+ "ON ci.product_info as pi,"
-				+ "WHERE ci.user_id = ?,"
-				+ "group by product_id";
+				+ " ci.id as id,"
+				+ " ci.user_id as user_id,"
+				+ " ci.temp_user_id as temp_user_id,"
+				+ " ci.product_id as product_id,"
+				+ " sum(ci.product_count) as product_count,"
+				+ " pi.price as price,"
+				+ " pi.regist_date as regist_date,"
+				+ " pi.update_date as update_date,"
+				+ " pi.product_name as product_name,"
+				+ " pi.product_name_kana as product_name_kana,"
+				+ " pi.product_description as product_description,"
+				+ " pi.category_id as category_id,"
+				+ " pi.image_file_path as image_file_path,"
+				+ " pi.image_file_name as image_file_name,"
+				+ " pi.release_date as release_date,"
+				+ " pi.release_company as release_company,"
+				+ " pi.status as status,"
+				+ " (sum(ci.product_count) * pi.price) as subtotal"
+				+ " FROM cart_info as ci"
+				+ " LEFT JOIN product_info as pi"
+				+ " ON ci.product_id = pi.product_id"
+				+ " WHERE ci.user_id = ?"
+				+ " group by product_id";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			System.out.println("cartinfodao-getcartinfodtolist" + loginId);
@@ -63,7 +63,7 @@ public class CartInfoDAO {
 				cartInfoDTO.setImageFilePath(resultSet.getString("image_file_path"));
 				cartInfoDTO.setImageFileName(resultSet.getString("image_file_name"));
 				cartInfoDTO.setReleaseDate(resultSet.getDate("release_date"));
-				cartInfoDTO.setReleaseCompany(resultSet.getString(resultSet.getString("release_company")));
+				cartInfoDTO.setReleaseCompany(resultSet.getString("release_company"));
 				cartInfoDTO.setStatus(resultSet.getString("status"));
 				cartInfoDTO.setSubtotal(resultSet.getInt("subtotal"));
 				cartInfoDtoList.add(cartInfoDTO);
@@ -79,6 +79,7 @@ public class CartInfoDAO {
 		return cartInfoDtoList;
 	}
 
+//	カートの合計金額
 	public int getTotalPrice(String userId){
 		int totalPrice = 0;
 		DBConnector dbConnector = new DBConnector();
@@ -107,7 +108,7 @@ public class CartInfoDAO {
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
 		String sql = "INSERT into cart_info(user_id,temp_user_id,product_id,product_count,price,regist_date)"
-				+ "values(?,?,?,?,?,now()";
+				+ " values(?,?,?,?,?,now())";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, userId);
