@@ -25,7 +25,7 @@
 		<result name="error">home.jsp</result>
 	</action>
 
-	<action name="CreateDestinationCompleteAction" class="com.internoudev.sampleweb.action.CreateCompleteAction" method="execute">
+	<action name="CreateDestinationCompleteAction" class="com.internousdev.sampleweb.action.CreateDestinationCompleteAction" method="execute">
 		<result name="success">createDestinationComplete.jsp</result>
 		<result name="error">createDestination.jsp</result>
 	</action>

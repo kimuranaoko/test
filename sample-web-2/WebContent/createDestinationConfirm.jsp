@@ -25,11 +25,11 @@
 				</tr>
 				<tr>
 					<th scope="row"><s:label value="姓ふりがな"/></th>
-					<td><s:property value="familyNameKana"/><s:hidden name="familyName" value="%{familyName}"/></td>
+					<td><s:property value="familyNameKana"/><s:hidden name="familyNameKana" value="%{familyNameKana}"/></td>
 				</tr>
 				<tr>
 					<th scope="row"><s:label value="名ふりがな"/></th>
-					<td><s:property value="firstNameKana"/><s:hidden name="firstName" value="%{firstName}"/></td>
+					<td><s:property value="firstNameKana"/><s:hidden name="firstNameKana" value="%{firstNameKana}"/></td>
 				</tr>
 				<tr>
 					<th scope="row"><s:label value="性別"/></th>

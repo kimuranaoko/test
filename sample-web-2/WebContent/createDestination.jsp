@@ -72,7 +72,7 @@
 					</tr>
 					<tr>
 						<th scope="row"><s:label value="名"/></th>
-						<td><s:textfield name="firsName" class="txt" /></td>
+						<td><s:textfield name="firstName" class="txt" /></td>
 					</tr>
 					<tr>
 						<th scope="row"><s:label value="姓ふりがな" /></th>
