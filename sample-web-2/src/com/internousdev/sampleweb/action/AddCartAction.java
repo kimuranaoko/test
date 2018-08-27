@@ -55,7 +55,7 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 		System.out.println("★"+price);
 		System.out.println("★"+userId);
 		System.out.println("★"+tempUserId);
-		int count = cartInfoDao.regist(userId, tempUserId, productId, productCount, price);
+		int count = cartInfoDao.regist(userId, tempUserId,productId, productCount, price);
 		if(count > 0){
 			result = SUCCESS;
 		}

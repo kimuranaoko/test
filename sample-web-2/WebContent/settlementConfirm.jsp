@@ -32,13 +32,46 @@
 					<s:iterator value="#session.destinationInfoDtoList"  status="st">
 						<tr>
 							<td>
-								<s:if test="#st."
+								<s:if test="#st.index == 0">
+								<!-- １つ目のデータが初期値でチェックはいる	checked="checked"→初期値 -->
+									<input type="radio" name="id" checked="checked" value="<s:property value='id'/>"/>
+								</s:if>
+								<s:else>
+									<input type="radio" name="id" value="<s:property value='id'/>">
+								</s:else>
 							</td>
-						</tr>
+							<td>
+								<s:property value="familyName" /><span>　</span><s:property value="firstName"/><br>
+							</td>
+							<td>
+								<s:property value="familyNameKana" /><span>　</span><s:property value="firstNameKana" /><br>
+							</td>
+							<td>
+								<s:property value="userAddress" />
+							</td>
+							<td>
+								<s:property value="telNumber" />
+							</td>
+							<td>
+								<s:property value="email" />
+							</td>
 					</s:iterator>
 				</tbody>
 			</table>
+			<div class="submit_btn_box">
+				<div id=".contents-btn-set">
+					<s:submit value="決済" class="submit_btn"/>
+				</div>
+			</div>
 		</s:form>
+		<div class="submit_btn_box">
+			<div id=".contents-btn-set">
+				<s:form action="CreateDestinationAction">
+					<s:submit value="新規登録" class="submit_btn"/>
+				</s:form>
+			</div>
+		</div>
 	</div>
+	<s:include value="footer.jsp"/>
 </body>
 </html>
