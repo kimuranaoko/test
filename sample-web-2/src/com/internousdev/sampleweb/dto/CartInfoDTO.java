@@ -101,9 +101,9 @@ public class CartInfoDTO {
 	public void setImageFilePath(String imageFilePath){
 		this.imageFilePath = imageFilePath;
 	}
-	public String gitImageFileName(){
+	public String getImageFileName(){
 		return imageFileName;
-	}
+	}	
 	public void setImageFileName(String imageFileName){
 		this.imageFileName = imageFileName;
 	}

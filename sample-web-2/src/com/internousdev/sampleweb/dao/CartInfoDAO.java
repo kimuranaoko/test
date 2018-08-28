@@ -58,7 +58,7 @@ public class CartInfoDAO {
 				cartInfoDTO.setUpdateDate(resultSet.getDate("update_date"));
 				cartInfoDTO.setProductName(resultSet.getString("product_name"));
 				cartInfoDTO.setProductNameKana(resultSet.getString("product_name_kana"));
-				cartInfoDTO.setProductDescription(resultSet.getString("product_name"));
+				cartInfoDTO.setProductDescription(resultSet.getString("product_description"));
 				cartInfoDTO.setCategoryId(resultSet.getInt("category_id"));
 				cartInfoDTO.setImageFilePath(resultSet.getString("image_file_path"));
 				cartInfoDTO.setImageFileName(resultSet.getString("image_file_name"));

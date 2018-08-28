@@ -76,17 +76,17 @@ public class UserContentsAction extends ActionSupport implements SessionAware{
 		String userMessage="ユーザーIDを更新しました　";
 
 
-		if(loginId.equals("")){
+		if(loginId.equals(session.get("loginId"))){
 			this.loginId = session.get("loginId").toString();
 			idMessage = "ログインIDは変更ありません　";
 		}
 
-		if(loginPass.equals("")){
+		if(loginPass.equals(session.get("loginPass"))){
 			this.loginPass = session.get("loginPass").toString();
 			passMessage = "ログインパスワードは変更ありません　";
 		}
 
-		if(userName.equals("")){
+		if(userName.equals(session.get("userName"))){
 			this.userName = session.get("userName").toString();
 			userMessage = "ユーザーIDは変更ありません　";
 		}

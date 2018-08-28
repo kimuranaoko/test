@@ -26,6 +26,8 @@ public class CreateDestinationCompleteAction extends ActionSupport implements Se
 	public String execute(){
 		String result = ERROR;
 		DestinationInfoDAO destinationInfoDao = new DestinationInfoDAO();
+		System.out.println("ああああ"+familyName);
+		System.out.println("いいい"+firstName);
 	int count = destinationInfoDao.insert(String.valueOf(session.get("loginId")), familyName, firstName, familyNameKana, firstNameKana, email, telNumber, userAddress);
 	if(count > 0){
 		result = SUCCESS;
@@ -54,7 +56,7 @@ public class CreateDestinationCompleteAction extends ActionSupport implements Se
 	public String getFamilyName(){
 		return familyName;
 	}
-	public void FamilyName(String familyName){
+	public void setFamilyName(String familyName){
 		this.familyName = familyName;
 	}
 	public String getFamilyNameKana(){

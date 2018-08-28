@@ -73,14 +73,14 @@
 		<div>
 			<s:if test="flg == 2 && editMessage == null">
 				<s:form action="UserContentsAction">
-				<h4>変更したい所のみ入力してください</h4>
+				<h4>変更してください</h4>
 				<input type="hidden" name="flg" value="3">
 					<tr>
 						<td>
 							<label>ログインＩＤ：</label>
 						</td>
 						<td>
-							<input type="text" name="loginId" value=""/>
+							<s:textfield type="text" name="loginId" value='%{#session.loginId}'/>
 						</td>
 					</tr>
 					<tr>
@@ -88,7 +88,7 @@
 							<label>ログインＰＡＳＳ：</label>
 						</td>
 						<td>
-							<input type="text" name="loginPass" value=""/>
+							<s:textfield type="text" name="loginPass" value='%{#session.loginPass}'/>
 						</td>
 					</tr>
 					<tr>
@@ -96,7 +96,7 @@
 							<label>ユーザー名：</label>
 						</td>
 						<td>
-							<input type="text" name="userName" value=""/>
+							<s:textfield type="text" name="userName" value='%{#session.userName}'/>
 						</td>
 					</tr>
 				<s:submit value="更新"/>

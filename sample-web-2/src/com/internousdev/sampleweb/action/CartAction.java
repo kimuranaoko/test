@@ -11,7 +11,6 @@ import com.internousdev.sampleweb.dao.CartInfoDAO;
 import com.internousdev.sampleweb.dao.MCategoryDAO;
 import com.internousdev.sampleweb.dto.CartInfoDTO;
 import com.internousdev.sampleweb.dto.MCategoryDTO;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CartAction extends ActionSupport implements SessionAware{
@@ -33,14 +32,19 @@ public class CartAction extends ActionSupport implements SessionAware{
 		}
 		cartInfoDtoList = cartInfoDao.getCartInfoDtoList(userId);
 		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
-//		反復処理で中身があるうちはTRUE（買い物リストの情報があるうちは消す）
+//		反復処理で中身があるうちはTRUE??
 		if(!(iterator.hasNext())){
 			cartInfoDtoList = null;
 		}
 		session.put("cartInfoDtoList", cartInfoDtoList);
+//if(cartInfoDtoList != null) {
+//	System.out.println(((CartInfoDTO)session.get("cartInfoDtoList")).getImageFilePath());
+//	System.out.println(((CartInfoDTO)session.get("cartInfoDtoList")).getImageFileName());
+//}
+
 //		intから文字列に直してそれをintに直してる？？？？
 		int totalPrice = Integer.parseInt(String.valueOf(cartInfoDao.getTotalPrice(userId)));
-		session.put("totlaPrice", totalPrice);
+		session.put("totalPrice", totalPrice);
 		result = SUCCESS;
 
 		if(!session.containsKey("mCategoryList")){

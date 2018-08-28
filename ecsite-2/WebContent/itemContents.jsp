@@ -59,6 +59,11 @@
 			text-align:center;
 		}
 
+		#inline{
+		display: inline
+		}
+
+
 	</style>
 </head>
 <body>
@@ -72,7 +77,6 @@
 		</div>
 <!-- flg2ならボックス出現 -->
 			<s:if test="flg==2">
-				<table>
 					<s:form action="ItemContentsAction">
 					<input type="hidden" name="flg" value="3">
 						<tr>
@@ -80,15 +84,15 @@
 								<label>商品名：</label>
 							</td>
 							<td>
-								<input type="text" name="itemName" value=""/>
+								<s:textfield type="text" name="itemName" value='%{session.AItemName}'/>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<label>金額：</label>
+								<label>金額(円)：</label>
 							</td>
 							<td>
-								<input type="text" name="itemPrice" value=""/><a>　円</a>
+								<s:textfield type="text" name="itemPrice" value='%{session.AItemPrice}'/>
 							</td>
 						</tr>
 						<tr>
@@ -107,7 +111,6 @@
 						</tr>
 						<s:submit value="更新"/>
 					</s:form>
-				</table>
 
 			</s:if>
 

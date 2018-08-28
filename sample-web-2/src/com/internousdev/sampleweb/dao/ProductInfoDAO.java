@@ -185,13 +185,13 @@ public class ProductInfoDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
-		String sql = "SELECT + FROM product_info WHERE";
+		String sql = "SELECT * FROM product_info WHERE";
 		boolean initializeFlag = true;
 //		初期化フラグが立ってればカテゴリーIDとキーワードが一致するものを抽出
 //		初期化フラグが立ってなければキーワードが一致するものを抽出？？？
 		for(String keyword : keywordsList){
 			if(initializeFlag){
-				sql += " category_id=" + categoryId + "and(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
+				sql += " category_id=" + categoryId + " and(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
 				initializeFlag = false;
 			}else{
 				sql += " and (product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";

@@ -14,7 +14,7 @@ public class InputChecker {
 		if(StringUtils.isEmpty(value)){
 			stringList.add(propertyName+"を入力してください。");
 		}
-		if(value.length()<minLength || value.length() >maxLength){
+		if(value.length() < minLength || value.length() >maxLength){
 			stringList.add(propertyName+"は"+minLength+"文字以上"+maxLength+"文字以下で入力してください。");
 
 		}
