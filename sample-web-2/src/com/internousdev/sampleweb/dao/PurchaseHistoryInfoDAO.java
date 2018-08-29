@@ -39,8 +39,8 @@ public class PurchaseHistoryInfoDAO {
 				+ " di.first_name_kana as first_name_kana,"
 				+ " di.email as email,"
 				+ " di.tel_number as tel_number,"
-				+ " di.user_address as user_address,"
-				+ " FROM purchase_history as phi"   /*購入履歴と*/
+				+ " di.user_address as user_address"
+				+ " FROM purchase_history_info as phi"/*購入履歴と*/
 				+ " LEFT JOIN product_info as pi"  /*商品情報と*/
 				+ " ON phi.product_id = pi.product_id"
 				+ " LEFT JOIN destination_info as di"  /*宛先情報をドッキング*/
