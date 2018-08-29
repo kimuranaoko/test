@@ -28,6 +28,10 @@
 		function goSearchItemAction(){
 			document.getElementById("form").action="SearchItemAction";
 		}
+// 		商品追加を追加してみたい
+		function goCreateProductAction(){
+			document.getElementById("form").action="CreateProductAction";
+		}
 	</script>
 
 </head>
@@ -57,6 +61,7 @@
 				<s:if test="#session.logined==1">
 					<li><s:submit value="マイページ" class="submit_btn" onclick="goMyPageAction();"/></li>
 				</s:if>
+					<li><s:submit value="商品編集" class="submit_btn" onclick="goCreateProductAction();"/></li>
 			</s:form>
 			</ul>
 			</div>

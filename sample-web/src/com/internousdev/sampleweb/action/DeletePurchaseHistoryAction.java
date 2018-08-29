@@ -33,7 +33,9 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 
 			sexList.add(MALE);
 			sexList.add(FEMALE);
-
+			if(!session.containsKey("sexList")) {
+				session.put("sexList", sexList);
+			}
 			result=SUCCESS;
 		}
 		return result;
