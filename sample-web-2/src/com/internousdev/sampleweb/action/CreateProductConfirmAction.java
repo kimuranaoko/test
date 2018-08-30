@@ -10,36 +10,51 @@ import com.internousdev.sampleweb.dao.MCategoryDAO;
 import com.internousdev.sampleweb.dto.MCategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CreateProductAction extends ActionSupport implements SessionAware{
+
+public class CreateProductConfirmAction extends ActionSupport implements SessionAware{
+//	ふぁいるぱすはちょくで./images
+//	カテゴリーはリスト
+//	日付じゃないかも
 
 	private String productName;
 	private String productNameKana;
-	private String productDescription; //詳細
+	private String productDescription;
 	private int price;
 	private String imageFileName;
 	private String releaseDate;
 	private String releaseCompany;
+	private String categoryId;
 
+
+	private String categoryName;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
-
 	private Map<String,Object> session;
+
 	public String execute(){
 		String result = ERROR;
-//		★★エラー処理してない★★
-//いらなくない？次でいれるし空白だし・・・と思ったけどエラーで戻ってきたときに消えないようだった
-		session.put("productName",productName);
-		session.put("productNameKana",productNameKana);
-		session.put("productDescription",productDescription);
-		session.put("price", price);
-		session.put("imageFileName", imageFileName);
-		session.put("releaseDate", releaseDate);
-		session.put("releaseCompany", releaseCompany);
 
-		if(!session.containsKey("mCategoryDtoList")){
-			MCategoryDAO mCategoryDao = new MCategoryDAO();
-			mCategoryDtoList = mCategoryDao.getMCategoryList();
-			session.put("mCategoryDtoList", mCategoryDtoList);
-		}
+//		InputChecker全部むししてる
+
+		session.put("productName",productName);
+		session.put("productNameKana", productNameKana);
+		session.put("price", price);
+		session.put("categoryId", categoryId);
+		session.put("releaseCompany", releaseCompany);
+		session.put("releaseDate", releaseDate);
+		session.put("productDescription", productDescription);
+		session.put("imageFileName", imageFileName);
+
+//		カテゴリーIDから名前検索のはず・・・
+		System.out.println( Integer.parseInt(String.valueOf(session.get("categoryId"))));
+
+		int i = Integer.parseInt(String.valueOf(session.get("categoryId")))-1;
+
+		MCategoryDAO mCategoryDao = new MCategoryDAO();
+		mCategoryDtoList = mCategoryDao.getMCategoryList();
+		categoryName = mCategoryDtoList.get(i).getCategoryName();
+
+		session.put("categoryName",categoryName);
+		System.out.println(session.get("categoryName"));
 
 		result = SUCCESS;
 		return result;
@@ -102,6 +117,22 @@ public class CreateProductAction extends ActionSupport implements SessionAware{
 		this.releaseCompany = releaseCompany;
 	}
 
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 	public List<MCategoryDTO> getmCategoryDtoList() {
 		return mCategoryDtoList;
 	}
@@ -117,7 +148,5 @@ public class CreateProductAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
-
 
 }

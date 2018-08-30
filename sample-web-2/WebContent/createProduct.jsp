@@ -16,7 +16,7 @@
 			<h1>商品情報入力画面</h1>
 
 <!-- 			★★エラー処理未★★ -->
-			<s:form action="CreateProductConfirmAcrtion">
+			<s:form action="CreateProductConfirmAction">
 				<table class="vertical-list-table">
 					<tr>
 						<th scope="row">商品名</th>
