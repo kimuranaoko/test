@@ -11,6 +11,40 @@ import com.internousdev.sampleweb.dto.ProductInfoDTO;
 import com.internousdev.sampleweb.util.DBConnector;
 
 public class ProductInfoDAO {
+//	新しく作る
+	public int createProduct(int productId,String productName,String productNameKana,int price,String categoryName,
+			String releaseCompany,String releaseDate,String productDescription, String imageFileName){
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		int count = 0;
+		String sql="INSERT INTO product_info(product_id,product_name,product_name_kana,price,category_name,release_company,"
+				+ " release_date,product_description,image_file_name,"
+				+ " image_file_path,status,regist_date,update_date)"
+				+ " value(?,?,?,?,?,?,?,?,?,./images,0,now(),now())";
+		try{
+			PreparedStatement preparedStatement =connection.prepareStatement(sql);
+			preparedStatement.setInt(1,productId);
+			preparedStatement.setString(2, productName);
+			preparedStatement.setString(3, productNameKana);
+			preparedStatement.setInt(4, price);
+			preparedStatement.setString(5, categoryName);
+			preparedStatement.setString(6, releaseCompany);
+			preparedStatement.setString(7, releaseDate);
+			preparedStatement.setString(8, productDescription);
+			preparedStatement.setString(9,imageFileName);
+			count = preparedStatement.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		try{
+			connection.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		return count;
+	}
+
 //	商品情報全件取得
 	public List<ProductInfoDTO> getProductInfoList(){
 		DBConnector dbConnector = new DBConnector();

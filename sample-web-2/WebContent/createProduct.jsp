@@ -19,6 +19,10 @@
 			<s:form action="CreateProductConfirmAction">
 				<table class="vertical-list-table">
 					<tr>
+						<th scope="row">商品ID</th>
+						<td><s:textfield name="productId" value="%{#session.productId}" label="商品ID" placeholder="商品ID" class="txt"/></td>
+					</tr>
+					<tr>
 						<th scope="row">商品名</th>
 						<td><s:textfield name="productName" value="%{#session.productName}" label="商品名" placeholder="商品名" class="txt"/></td>
 					</tr>

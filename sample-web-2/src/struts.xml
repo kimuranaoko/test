@@ -40,6 +40,10 @@
 		<result name="error">home.jsp</result>
 	</action>
 
+	<action name="CreateProductCompleteAction" class="com.internousdev.sampleweb.action.CreateProductCompleteAction" method="execute">
+		<result name="success">createProductComplete.jsp</result>
+		<result name="error">createProduct.jsp</result>
+	</action>
 
 	<action name="CreateProductConfirmAction" class="com.internousdev.sampleweb.action.CreateProductConfirmAction" method="execute">
 		<result name="success">createProductConfirm.jsp</result>

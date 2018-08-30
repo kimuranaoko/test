@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateProductAction extends ActionSupport implements SessionAware{
 
+	private int productId;
 	private String productName;
 	private String productNameKana;
 	private String productDescription; //詳細
@@ -27,6 +28,7 @@ public class CreateProductAction extends ActionSupport implements SessionAware{
 		String result = ERROR;
 //		★★エラー処理してない★★
 //いらなくない？次でいれるし空白だし・・・と思ったけどエラーで戻ってきたときに消えないようだった
+		session.put("productId",productId);
 		session.put("productName",productName);
 		session.put("productNameKana",productNameKana);
 		session.put("productDescription",productDescription);

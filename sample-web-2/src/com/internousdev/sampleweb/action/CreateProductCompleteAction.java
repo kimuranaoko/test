@@ -6,15 +6,11 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sampleweb.dao.MCategoryDAO;
+import com.internousdev.sampleweb.dao.ProductInfoDAO;
 import com.internousdev.sampleweb.dto.MCategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-
-public class CreateProductConfirmAction extends ActionSupport implements SessionAware{
-//	ふぁいるぱすはちょくで./images
-//	カテゴリーはリスト
-//	日付じゃないかも
+public class CreateProductCompleteAction extends ActionSupport implements SessionAware{
 
 	private int productId;
 	private String productName;
@@ -26,41 +22,19 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 	private String releaseCompany;
 	private String categoryId;
 
-
 	private String categoryName;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private Map<String,Object> session;
 
 	public String execute(){
 		String result = ERROR;
-
-//		InputChecker全部むししてる
-
-		session.put("productId",productId);
-		session.put("productName",productName);
-		session.put("productNameKana", productNameKana);
-		session.put("price", price);
-		session.put("categoryId", categoryId);
-		session.put("releaseCompany", releaseCompany);
-		session.put("releaseDate", releaseDate);
-		session.put("productDescription", productDescription);
-		session.put("imageFileName", imageFileName);
-
-//		カテゴリーIDから名前検索のはず・・・
-		System.out.println( Integer.parseInt(String.valueOf(session.get("categoryId"))));
-
-		int i = Integer.parseInt(String.valueOf(session.get("categoryId")))-1;
-
-		MCategoryDAO mCategoryDao = new MCategoryDAO();
-		mCategoryDtoList = mCategoryDao.getMCategoryList();
-		categoryName = mCategoryDtoList.get(i).getCategoryName();
-
-		session.put("categoryName",categoryName);
-		System.out.println(session.get("categoryName"));
-
-		result = SUCCESS;
+		ProductInfoDAO ProductInfoDao = new ProductInfoDAO();
+		int count = ProductInfoDao.createProduct(productId,productName,productNameKana,price,categoryName,
+				releaseCompany,releaseDate,productDescription,imageFileName);
+		if(count > 0){
+			result = SUCCESS;
+		}
 		return result;
-
 	}
 
 	public int getProductId() {
@@ -158,5 +132,7 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
+
 
 }

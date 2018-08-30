@@ -14,8 +14,12 @@
 	<div id="contents">
 		<h1>登録内容確認画面</h1>
 		<s:form action="CreateProductCompleteAction">
-			<table class="vertiacal-list-table">
-				<tr>
+			<table class="vertical-list-table">
+			<tr>
+				<th scope="row"><s:label value="商品ID"/></th>
+				<td><s:property value="productId"/></td>
+			</tr>
+			<tr>
 				<th scope="row"><s:label value="商品名"/></th>
 				<td><s:property value="productName"/></td>
 			</tr>
@@ -47,10 +51,30 @@
 				<th scope="row"><s:label value="商品名画像"/>
 				<td><s:property value="imageFileName"/>
 			</tr>
-
 			</table>
-		</s:form>
+			<div class="submit_btn_box">
+				<div id=".contents-btn-set">
+					<s:submit value="登録" class="submit_btn"/>
+				</div>
+			</div>
 
+			<s:hidden name="productId" value="%{productId}"/>
+			<s:hidden name="productName" value="%{productName}"/>
+			<s:hidden name="productNameKana" value="%{productNameKana}"/>
+			<s:hidden name="price" value="%{price}"/>
+			<s:hidden name="categoryName" value="%{categoryName}"/>
+			<s:hidden name="releaseCompany" value="%{releaseCompany}"/>
+			<s:hidden name="releaseDate" value="%{releaseDate}"/>
+			<s:hidden name="productDescription" value="%{productDescription}"/>
+			<s:hidden name="imageFileName" value="%{imageFileName}"/>
+
+			<s:hidden name="categoryId" value="%{categoryId}"/>
+			<s:hidden name="mCategoryDtoList" value="%{mCategoryDtoList}"/>
+
+		</s:form>
+	</div>
+	<div id="footer">
+		<s:include value="footer.jsp"/>
 	</div>
 </body>
 </html>
