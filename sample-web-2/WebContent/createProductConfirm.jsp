@@ -49,7 +49,7 @@
 			</tr>
 			<tr>
 				<th scope="row"><s:label value="商品名画像"/>
-				<td><s:property value="imageFileName"/>
+				<td><img src='./images/<s:property value="%{#session.imageFileName}"/>' width="100px" height="100px"/></td>
 			</tr>
 			</table>
 			<div class="submit_btn_box">
@@ -66,10 +66,9 @@
 			<s:hidden name="releaseCompany" value="%{releaseCompany}"/>
 			<s:hidden name="releaseDate" value="%{releaseDate}"/>
 			<s:hidden name="productDescription" value="%{productDescription}"/>
-			<s:hidden name="imageFileName" value="%{imageFileName}"/>
+			<s:hidden name="imageFileName" value="%{#session.imageFileName}"/>
 
 			<s:hidden name="categoryId" value="%{categoryId}"/>
-			<s:hidden name="mCategoryDtoList" value="%{mCategoryDtoList}"/>
 
 		</s:form>
 	</div>

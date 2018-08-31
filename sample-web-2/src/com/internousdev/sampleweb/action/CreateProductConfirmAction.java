@@ -24,7 +24,7 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 	private String imageFileName;
 	private String releaseDate;
 	private String releaseCompany;
-	private String categoryId;
+	private int categoryId;
 
 
 	private String categoryName;
@@ -58,6 +58,15 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 		session.put("categoryName",categoryName);
 		System.out.println(session.get("categoryName"));
 
+//		ファイルパスから画像名だけ抽出してるつもりクロームできないかも
+
+		String imageFileName = session.get("imageFileName").toString();
+		String onlyImageFileName = imageFileName.substring(imageFileName.lastIndexOf("images")+7);
+		String onlyImageFileNameComplete = onlyImageFileName.substring(0,onlyImageFileName.length()-2);
+		System.out.println(imageFileName);
+		System.out.println("★"+onlyImageFileNameComplete);
+		session.put("imageFileName", onlyImageFileNameComplete);
+		imageFileName = onlyImageFileNameComplete;
 		result = SUCCESS;
 		return result;
 
@@ -127,11 +136,11 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 		this.releaseCompany = releaseCompany;
 	}
 
-	public String getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(String categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 

@@ -20,22 +20,24 @@ public class CreateProductCompleteAction extends ActionSupport implements Sessio
 	private String imageFileName;
 	private String releaseDate;
 	private String releaseCompany;
-	private String categoryId;
+	private int categoryId;
 
 	private String categoryName;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private Map<String,Object> session;
 
 	public String execute(){
+		System.out.println("imageFileName"+imageFileName);
 		String result = ERROR;
 		ProductInfoDAO ProductInfoDao = new ProductInfoDAO();
-		int count = ProductInfoDao.createProduct(productId,productName,productNameKana,price,categoryName,
+		int count = ProductInfoDao.createProduct(productId,productName,productNameKana,price,categoryId,
 				releaseCompany,releaseDate,productDescription,imageFileName);
 		if(count > 0){
-			result = SUCCESS;
-		}
+				}
+		System.out.println("aa"+result);
 		return result;
 	}
+
 
 	public int getProductId() {
 		return productId;
@@ -101,11 +103,11 @@ public class CreateProductCompleteAction extends ActionSupport implements Sessio
 		this.releaseCompany = releaseCompany;
 	}
 
-	public String getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(String categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -132,7 +134,5 @@ public class CreateProductCompleteAction extends ActionSupport implements Sessio
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
-
 
 }
