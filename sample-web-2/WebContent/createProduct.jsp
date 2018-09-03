@@ -43,8 +43,8 @@
 						<td><s:textfield name="releaseCompany" value="%{#session.releaseCompany}" label="販売会社" placeholder="販売会社" class="txt"/></td>
 					</tr>
 					<tr>
-						<th scope="row">商品名発売日</th>
-						<td><s:textfield name="releaseDate" value="%{#session.releaseDate}" label="商品名発売日" placeholder="商品名発売日" class="txt"/></td>
+						<th scope="row" >商品名発売日</th>
+						<td><s:textfield value="%{#session.releaseDate}" label="商品名発売日" placeholder="商品名発売日" class="txt"/></td>
 					</tr>
 					<tr>
 						<th scope="row">商品名詳細</th>
@@ -66,5 +66,8 @@
 		<div id="footer">
 			<s:include value="footer.jsp"/>
 		</div>
+		<script src="jquery.min.js"></script>
+
+		<script src="jquery.datetimepicker.js"></script>
 	</body>
 </html>
