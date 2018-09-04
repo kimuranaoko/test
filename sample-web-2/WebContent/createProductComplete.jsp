@@ -7,7 +7,6 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./css/style.css">
-	<meta http-equiv="refresh" content="3;URL='HomeAction'"/>
 	<title>登録完了</title>
 </head>
 <body>
@@ -21,5 +20,7 @@
 	<div id="footer">
 		<s:include value="footer.jsp"/>
 	</div>
+
+
 </body>
 </html>
