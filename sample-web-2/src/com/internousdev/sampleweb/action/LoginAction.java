@@ -65,6 +65,9 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			if(userInfoDao.login(loginId,password)>0){
 				UserInfoDTO userInfoDTO = userInfoDao.getUserInfo(loginId, password);
 				session.put("loginId", userInfoDTO.getUserId());
+				session.put("status",userInfoDTO.use)
+				
+				管理者じゃなかったら{
 				int count=0;
 				CartInfoDAO cartInfoDao = new CartInfoDAO();
 
@@ -89,6 +92,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			}
 			session.put("logined", 1);
 		}
+			ELSE　IF　かんりしゃだったら
+			result="admin"
 		return result;
 	}
 
