@@ -60,7 +60,7 @@
 				</tr>
 			</table>
 			<div class="box">
-				<s:if test="#session.savedLoginId == true">
+				<s:if test="#session.savedLoginId==true">
 					<s:checkbox name="savedLoginId" checked="checked"/>
 				</s:if>
 				<s:else>

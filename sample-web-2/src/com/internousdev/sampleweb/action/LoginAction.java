@@ -42,7 +42,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		}else{
 			session.put("savedLoginId", false);
 //			※※※本当はsession.remove("loginId",loginId);みたいだけど動かなかったから消した※※※
-			session.remove("loginId");
+			session.remove("loginId",loginId);
 		}
 
 		InputChecker inputChecker = new InputChecker();

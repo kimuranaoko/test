@@ -65,12 +65,12 @@ theater varchar(50) comment "劇場",
 status tinyint not null default 0 comment "ステータス",
 regist_date datetime not null comment "登録日",
 update_date datetime comment "更新日",
-foreign key(category_id) references m_category(category_id)
+foreign key(troupe_id) references m_category(troupe_id)
 )
 default charset=utf8
 comment="チケット情報テーブル"
 ;
-insert into product_info values
+insert into product_info valuesi980
 ( 1, 1,"本１","ほん１","本１の商品詳細",2,100,"./images","sample.jpg",now(),"発売会社",0,now(),now()),
 ( 2, 2,"本２","ほん２","本２の商品詳細",2,200,"./images","sample.jpg",now(),"発売会社",0,now(),now()),
 ( 3, 3,"本３","ほん３","本３の商品詳細",2,300,"./images","sample.jpg",now(),"発売会社",0,now(),now()),
@@ -231,6 +231,7 @@ image_file_path varchar(100) comment "画像ファイルパス",
 image_file_name varchar(50) comment "画像ファイル名",
 release_date datetime not null comment "公演年月(初日)",
 theater varchar(50) comment "劇場",
+comment varchar(255) not null comment "感想",
 status tinyint not null default 0 comment "ステータス",
 regist_date datetime not null comment "登録日",
 update_date datetime comment "更新日"
@@ -239,5 +240,27 @@ default charset=utf8
 comment="華形さんwiki"
 ;
 
-
+create table students_info(
+id int primary key not null auto_increment comment "ID",
+students_id varchar(16) unique not null comment "生徒ID",
+family_name varchar(32) not null comment "姓",
+first_name varchar(32) not null comment "名",
+family_name_kana varchar(32) not null comment "姓かな",
+first_name_kana varchar(32) not null comment "名かな",
+nickname varchar(32) not null comment "愛称",
+birth_date varchar(32) not null comment "誕生日",
+birth_place varchar(32) not null comment "出身地",
+height int not null comment "身長",
+debut_date int not null comment "初舞台年",
+debut_program  varchar(255) not null comment "初舞台",
+love_part varchar(255) not null comment "好きだった役",
+class int not null comment "期",
+comment varchar(255) not null commit "私のメモ",
+status tinyint not null default 0 comment "ステータス",
+regist_date datetime not null comment "登録日",
+update_date datetime not null comment "更新日"
+)
+default charset=utf-8
+comment="生徒一覧"
+;
 

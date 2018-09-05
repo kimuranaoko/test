@@ -20,7 +20,7 @@ public class LogoutAction extends ActionSupport implements SessionAware{
 		int count = userInfoDao.logout(loginId);
 		if(count > 0){
 			session.clear();
-			session.put("saveLoginId",savedLoginId);
+			session.put("savedLoginId",savedLoginId);
 			session.put("loginId", loginId);
 			result = SUCCESS;
 		}
