@@ -127,11 +127,14 @@ public class ProductInfoDAO {
 		Connection connection = dbConnector.getConnection();
 		List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 		String sql = "SELECT * FROM product_info where category_id=? and product_id not in(?) order by rand() limit ?,?";
+//		自分の解釈
 //		product_id not in(?)→product_idカラムの値が？と一致しなければTRUE(1)を返す
 //		order by rand() limit 1 →ランダムに1行返す
 //		limit 2,3→0,1,2だから3番目以降の値から3つ返す
 //		product_infoテーブルからcategory_idがcategoryIdでproduct_idカラムの値がproductIdと一致しないものを
-//		imitoffset番目以降からlimitRowCount行分ランダムで取得する
+////		imitoffset番目以降からlimitRowCount行分ランダムで取得する
+//		order by rand()ランダムでえらんだ行の limit 0,3　0から3つ
+//		product_id not in(product_id)今選んでるプロダクトIDは除いて
 		 try{
 			 PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			 preparedStatement.setInt(1, categoryId);

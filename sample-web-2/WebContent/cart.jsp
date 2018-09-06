@@ -80,6 +80,13 @@
 						<s:submit value="削除" class="submit_btn" onclick="this.form.action='DeleteCartAction';"/>
 					</div>
 				</div>
+				
+<!-- 				ボタンについて。同じ情報(s:form)を保持して違うactionに飛びたい時は、function~~ -->
+<%-- 				必要になる。thi.form.actionは<s:form action="〇〇"＞の○○を上書きしてる --%>
+<%-- 				heddarのようにs:formでは定義せずそれぞれに書いてもOK！ --%>
+				
+				
+				
 			</s:form>
 		</s:if>
 		<s:else>

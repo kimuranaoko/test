@@ -46,6 +46,8 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 			userId = String.valueOf(session.get("tempUserId"));
 			tempUserId = String.valueOf(session.get("tempUserId"));
 		}
+
+		System.out.println(productCount);
 		productCount = String.valueOf((productCount.split(" ," , 0))[0]);
 
 		CartInfoDAO cartInfoDao = new CartInfoDAO();

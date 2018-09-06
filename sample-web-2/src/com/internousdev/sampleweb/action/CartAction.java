@@ -32,7 +32,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 		}
 		cartInfoDtoList = cartInfoDao.getCartInfoDtoList(userId);
 		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
-//		反復処理で中身があるうちはTRUE??
+//		反復処理で中身がなければnull
 		if(!(iterator.hasNext())){
 			cartInfoDtoList = null;
 		}
