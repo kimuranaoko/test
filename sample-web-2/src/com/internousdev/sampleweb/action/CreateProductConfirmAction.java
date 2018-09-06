@@ -1,13 +1,17 @@
 package com.internousdev.sampleweb.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sampleweb.dao.MCategoryDAO;
 import com.internousdev.sampleweb.dto.MCategoryDTO;
+import com.internousdev.sampleweb.util.CommonUtility;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -21,11 +25,14 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 	private String productNameKana;
 	private String productDescription;
 	private int price;
-	private String imageFileName;
 	private String releaseDate;
 	private String releaseCompany;
 	private int categoryId;
 
+	private File userImage;
+	private String userImageContentType;
+	private String userImageFileName;
+	private String fileExtension;
 
 	private String categoryName;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
@@ -44,29 +51,49 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 		session.put("releaseCompany", releaseCompany);
 		session.put("releaseDate", releaseDate);
 		session.put("productDescription", productDescription);
-		session.put("imageFileName", imageFileName);
+
+		System.out.println(userImageFileName);
+		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images/");
+		System.out.println("Image Location:"+filePath);
+
+		CommonUtility commonUtility = new CommonUtility();
+		userImageFileName = commonUtility.getRamdomValue()+userImageFileName;
+
+		File fileToCreate = new File(filePath,userImageFileName);
+		try{
+			FileUtils.copyFile(userImage, fileToCreate);
+			session.put("imageFileName", userImageFileName);
+			session.put("imageFilePath", "./images/"+userImageFileName);
+			session.put("image_flg", userImageFileName);
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+
+
+
+//		session.put("imageFileName", imageFileName);
 
 //		カテゴリーIDから名前検索のはず・・・
-		System.out.println( Integer.parseInt(String.valueOf(session.get("categoryId"))));
-
-		int i = Integer.parseInt(String.valueOf(session.get("categoryId")))-1;
-
-		MCategoryDAO mCategoryDao = new MCategoryDAO();
-		mCategoryDtoList = mCategoryDao.getMCategoryList();
-		categoryName = mCategoryDtoList.get(i).getCategoryName();
-
-		session.put("categoryName",categoryName);
-		System.out.println(session.get("categoryName"));
+//		System.out.println( Integer.parseInt(String.valueOf(session.get("categoryId"))));
+//
+//		int i = Integer.parseInt(String.valueOf(session.get("categoryId")))-1;
+//
+//		MCategoryDAO mCategoryDao = new MCategoryDAO();
+//		mCategoryDtoList = mCategoryDao.getMCategoryList();
+//		categoryName = mCategoryDtoList.get(i).getCategoryName();
+//
+//		session.put("categoryName",categoryName);
+//		System.out.println(session.get("categoryName"));
 
 //		ファイルパスから画像名だけ抽出してるつもりクロームできないかも
-
-		String imageFileName = session.get("imageFileName").toString();
-		String onlyImageFileName = imageFileName.substring(imageFileName.lastIndexOf("images")+7);
-		String onlyImageFileNameComplete = onlyImageFileName.substring(0,onlyImageFileName.length()-2);
-		System.out.println(imageFileName);
-		System.out.println("★"+onlyImageFileNameComplete);
-		session.put("imageFileName", onlyImageFileNameComplete);
-		imageFileName = onlyImageFileNameComplete;
+//
+//		String imageFileName = session.get("imageFileName").toString();
+//		String onlyImageFileName = imageFileName.substring(imageFileName.lastIndexOf("images")+7);
+//		String onlyImageFileNameComplete = onlyImageFileName.substring(0,onlyImageFileName.length()-2);
+//		System.out.println(imageFileName);
+//		System.out.println("★"+onlyImageFileNameComplete);
+//		session.put("imageFileName", onlyImageFileNameComplete);
+//		imageFileName = onlyImageFileNameComplete;
 		result = SUCCESS;
 		return result;
 
@@ -112,13 +139,13 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 		this.price = price;
 	}
 
-	public String getImageFileName() {
-		return imageFileName;
-	}
-
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
-	}
+//	public String getImageFileName() {
+//		return imageFileName;
+//	}
+//
+//	public void setImageFileName(String imageFileName) {
+//		this.imageFileName = imageFileName;
+//	}
 
 	public String getReleaseDate() {
 		return releaseDate;

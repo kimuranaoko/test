@@ -9,6 +9,36 @@
 		<link rel="stylesheet" href="./css/style.css">
 		<title>商品情報作成画面</title>
 		<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+		<script>
+			$("loadFile").onchange=function(evt){
+				showImage(false);
+				var files=evt.target.files;
+				if(files.length == 0){
+					return;
+					var file = file[0];
+					if(!file.type.match(/image/)){
+						alert('画像を選んでください');
+						return;
+					}
+					var reader = new FileReader();
+					reader.onload=function(evt){
+						$("#thumb").src=reader.result;
+						showImage(true);
+					}
+					reader.readAsDateURL(file);
+				}
+
+				function showImage(b){
+					var val=b ? "block" : "none";
+					$("#up_btn").style.display = val;
+					$("#thumb").style.displat = val;
+				}
+
+				function $(id){
+					return document.querySelector(id);
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<jsp:include page="header.jsp"/>
@@ -50,11 +80,17 @@
 						<th scope="row">商品名詳細</th>
 						<td><s:textfield name="productDescription" value="%{#session.productDescription}" label="商品名詳細" placeholder="商品名詳細" class="txt"/></td>
 					</tr>
+
 					<tr>
-						<th scope="row">商品名画像</th>
-						<td><input type="file" name="imageFileName" value="%{#session.imageFileName}" class="txt"/></td>
-						<s:hidden name="imageFileName" value=""/>
+						<th>商品画像</th>
+						<td class="image"><s:file name="userImage" accept='image/jpg,image/jpeg'/></td>
 					</tr>
+<!-- 					<tr> -->
+<!-- 						<th scope="row">商品名画像</th> -->
+<!-- 						<td><input type="file" name="imageFileName" value="%{#session.imageFileName}" class="txt"/></td> -->
+<%-- 						<s:hidden name="imageFileName" value=""/> --%>
+<!-- 					</tr> -->
+
 				</table>
 				<div class="submit_btn_box">
 					<div id=".contents-btn-set">

@@ -46,6 +46,13 @@
 	</action>
 
 	<action name="CreateProductConfirmAction" class="com.internousdev.sampleweb.action.CreateProductConfirmAction" method="execute">
+
+		<interceptor-ref name="fileUpload">
+			<param name="maximumSize">2097152</param>
+			<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+
 		<result name="success">createProductConfirm.jsp</result>
 		<result name="error">createProduct.jsp</result>
 	</action>
