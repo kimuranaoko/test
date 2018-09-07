@@ -89,7 +89,7 @@ public class CreateProductConfirmAction extends ActionSupport implements Session
 //
 //		String imageFileName = session.get("imageFileName").toString();
 //		String onlyImageFileName = imageFileName.substring(imageFileName.lastIndexOf("images")+7);
-//		String onlyImageFileNameComplete = onlyImageFileName.substring(0,onlyImageFileName.length()-2);
+//		String onlyImageFileNameComplete = onlyImageFileName.	(0,onlyImageFileName.length()-2);
 //		System.out.println(imageFileName);
 //		System.out.println("★"+onlyImageFileNameComplete);
 //		session.put("imageFileName", onlyImageFileNameComplete);
